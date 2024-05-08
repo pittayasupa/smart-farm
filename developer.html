@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" type="bmg/png/icon" href="icon/smart-farm-logo.png" />
+  <meta charset="utf-8">
+  <title>Developer</title>
+<style>
+
+  body {
+      margin: 0;
+  }
+  ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      width: 15%;
+      background-color: #333;
+      position: fixed;
+      height: 100%;
+      overflow: auto;
+  }
+
+  li a {
+      display: block;
+      color: white;
+      padding: 8px 16px;
+      text-decoration: none;
+  }
+
+  li a.active {
+      background-color: #555;
+      color: white;
+  }
+
+  li a:hover:not(.active) {
+      background-color: #555;
+      color: white;
+  }
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a class="active" href="/">Home</a></li>
+  <li><a href="#Smart Farm Block Diagram">SmartFarm BlockDiagram</a></li>
+  <li><a href="#Smart-Farm Board">Smart-Farm Board</a></li>
+  <li><a href="#ArduinoNano/NRF24L01">ArduinoNano/NRF24L01</a></li>
+  <li><a href="#NodeMCU/ESP8266 Module WiFi">NodeMCU/ESP8266 Module WiFi</a></li>
+</ul>
+
+<div style="margin-left:15%;padding:1px 16px;height:1000px;">
+  <h2>Developer ผู้พัฒนา</h2>
+  
+  <br>
+
+
+  <p style="text-align: justify; text-autospace: none;"><span style="font-family: TH SarabunPSK, helvetica, sans-serif; font-size: 18pt;"><span style="color: black; background: white;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;สภาวะเศรษฐกิจโลก และสถานการณ์ทางการเมืองในรอบปีที่ผ่านมาส่งผลให้สินค้าเกษตรสำคัญหลายรายการของไทย มีทิศทางที่ไม่สดใสมากนัก โดยเฉพาะสินค้าหลัก เช่น ข้าว ยางพารา มีตัวเลขการส่งออกที่ลดลงทั้งเชิงปริมาณและมูลค่า หากนำข้อมูลเชิงสถิติในปี 2556 มกราคมถึงตุลาคม มาวิเคราะห์ จะพบว่าด้านมูลค่าการค้าขายสินค้าเกษตรมวลรวมของไทยกับตลาดส่งออกที่สำคัญในกลุ่มอาเซียน อย่างบรูไน อินโดนีเซีย ลาว เวียดนาม กัมพูชา ฯลฯ หรือแม้แต่ประเทศคู่ค้าที่สำคัญอย่างจีน ญี่ปุ่น และสหรัฐอเมริกา ประเทศไทยยังคงได้ดุลการค้าอยู่มาก ถึงแม้ว่าจะได้รับความกดดันจากภาวะเศรษฐกิจในสหรัฐอเมริกาและยุโรปก็ตาม</span><span style="color: black; background: white;">&nbsp;</span><span style="color: black;"><br /><span style="background: white;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; สิ่งเหล่านี้สะท้อนให้เห็นถึงศักยภาพของเกษตรกรไทย ศักยภาพของทรัพยากรธรรมชาติของไทยที่เหมาะกับการพัฒนาอุตสาหกรรมเกษตรทั้งการปลูกพืชและเลี้ยงสัตว์ คนไทยเป็นคนที่มีความรู้ความสามารถ</span><span style="background: white;">&nbsp; แต่จะทำอย่างไรให้เกษตรกรไทยสามารถแข่งขันกับต่างประเทศได้เหมือนเกษตรกรประเทศอื่น อย่างญี่ปุ่น เกาหลี ไต้หวัน การพัฒนาเกษตรกรไทยจึงเป็นการสร้างโอกาสให้กับอุตสาหกรรมเกษตรของไทย ยิงถ้ามองไปในอนาคต จะพบว่าอีก 20-30 ปีข้างหน้าประชากรโลกจะเพิ่มขึ้นเป็น 8,000 ล้านคน จากปัจจุบันมีทั้งหมด 7,100 ล้านคน ทำให้ความต้องการซื้อเพิ่มขึ้นมหาศาล ในขณะที่พื้นที่ทำการเกษตรมีจำกัด หากเราสามารถบริหารจัดการพื้นที่ที่มีจำกัดให้เกิดประโยชน์สูงสุด อุตสาหกรรมเกษตรก็จะช่วยเสริมศักยภาพการแข่งขันให้กับประเทศไทยเป็นที่ 1 ของโลกต่อไปอย่างยั่งยืน</span></span></span></p>
+<p style="text-align: justify; text-autospace: none;"><span style="font-family: TH SarabunPSK, helvetica, sans-serif; font-size: 18pt;"><span style="color: black; background: white;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; อย่างไรก็ตามเกษตรกรไทยมีความรู้ความสามารถอยู่แล้ว แต่ยังขาดเทคโนโลยีเข้ามาช่วยอย่างประเทศอื่นๆ ดั้งนั้นเกษตรกรไทยจึงจำเป็นต้องนำเข้าเทคโนโลยีของต่างประเทศมาช่วยพัฒนาในภาคการเกษตร</span> แต่การนำเข้าเทคโนโลยีนี้ก็จะต้องใช้ต้นทุนที่สูงตามสภาพเศรษฐกิจในปัจจุบัน ซึ้งเกษตรกรไทยทั่วไปส่วนใหญ่จะขาดต้นทุนหรือมีต้นทุนน้อยในการที่จะนำเทคโนโลยีจากต่างประเทศเข้ามาใช้ในงานเกษตรนั้นเอง ถึงแม้เกษตรกรไทยส่วนใหญ่จะมีความรู้ความสามารถในด้านงานต่างๆ แต่ก็ยังขาดทักษะความรู้ในด้านการใช้โปรแกรมควบคุมอย่างอัตโนมัติในงานด้านเกษตรกรรมแทบทุกระดับ </span></p>
+<p style="text-align: justify; text-indent: 36.0pt; text-autospace: none;"><span style="font-size: 18pt; font-family: TH SarabunPSK, helvetica, sans-serif; color: #000000;">ที่กล่าวมาข้างต้นทางผู้พัฒนาทำได้เห็นถึงปัญหาที่เกิดขึ้น จึงจะพัฒนาเครื่องมือช่วยหรือเปลี่ยนจากการเกษตรดั่งเดิมไปสู่เกษตรทันสมัยหรือสมาร์ทฟาร์มด้วย ซอฟแวร์กราฟฟิกเชื่อมโยงข้อมูลกับผู้ใช้อย่างสมาร์ทเพื่อการกสิกรรมเป็นเครื่องมือสำหรับออกแบบคำสั่งควบคุมอุปกรณ์ทางอิเล็กทรอนิกส์เพื่อวัด จัดเก็บ ควบคุม เฝ้าดู แจ้งเตือน สนับสนุนการตัดสินใจในการทำกสิกรรม โดยเกษตรกรไม่จำเป็นต้องมีความรู้ในด้านการเขียนโปรแกรม ไม่ต้องมีความรู้ด้านการออกแบบวงจรอิเล็กทรอนิกส์ ระบบที่จะพัฒนาขึ้นนี้เป็นลักษณะกล่องหรือสัญลักษณ์ เพื่อผู้ใช้งานจับวางด้วยเมาส์เพื่อนำไปใช้ไปการกสิกรรมได้อย่างง่ายดาย</span></p>
+<p>&nbsp;</p>
+
+  
+
+  <p><span style="color: #000000; font-size: 16pt;"><strong><span style="font-family: TH SarabunPSK, sans-serif;">เราจึงพัฒนาให้ผู้ใช้ได้ออกแบบการทำงานของอุปกรณ์ได้ตามต้องการ โดยจะมีตัวตรวจรู้ตรวจจับต่างๆที่จำเป็นในการกสิกรรม</span></strong></span></p>
+<p><span style="font-size: 16pt; font-family: 'TH SarabunPSK', sans-serif; color: #000000;"><strong>&nbsp; &nbsp; &nbsp; อุปกรณ์และเซ็นเซอร์ที่ใช้ร่วมกับ Smart GUI (Block)</strong></span></p>
+<p><span style="font-size: 16pt; font-family: 'TH SarabunPSK', sans-serif; color: #000000;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>โมดูลสำหรับควบคุมการ เปิด-ปิด สวิตช์</strong></span></p>
+<p><span style="color: #000000; font-size: 16pt;"><span style="font-family: 'TH SarabunPSK', sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - โซลินอยด์วาล์ว </span><span style="font-family: 'TH SarabunPSK', sans-serif;">AC 220V 50Hz</span></span></p>
+<p><span style="color: #000000; font-size: 16pt;"><span style="font-family: 'TH SarabunPSK', sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - โซลินอยด์วาล์ว</span><span style="font-family: 'TH SarabunPSK', sans-serif;"> DC 12 V</span></span></p>
+<p><span style="color: #000000; font-size: 16pt;"><span style="font-family: 'TH SarabunPSK', sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - อุปกรณ์ไฟฟ้า </span><span style="font-family: 'TH SarabunPSK', sans-serif;">220V 50Hz</span></span></p>
+<p><span style="font-size: 16pt; font-family: 'TH SarabunPSK', sans-serif; color: #000000;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>โมดูลเซ็นเซอร์สำหรับวัดสภาพดิน</strong></span></p>
+<p><span style="color: #000000; font-size: 16pt;"><span style="font-family: 'TH SarabunPSK', sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-family: 'TH SarabunPSK', sans-serif;">- </span><span style="font-family: 'TH SarabunPSK', sans-serif;">ตัวตรวจรู้วัดความชื้นในดิน</span><span style="font-family: 'TH SarabunPSK', sans-serif;">&nbsp;(Soil Moisture Sensor)&nbsp;</span></span></p>
+<p><span style="font-size: 16pt; font-family: 'TH SarabunPSK', sans-serif; color: #000000;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>โมดูลเซ็นเซอร์สำหรับวัดสภาพอากาศ</strong></span></p>
+<p><span style="font-size: 16pt; font-family: 'TH SarabunPSK', sans-serif; color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - ตัวตรวจรู้ก๊าซคาร์บอนไดออกไซด์ (Co2)</span></p>
+<p><span style="font-size: 16pt; font-family: 'TH SarabunPSK', sans-serif; color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - ตัวตรวจรู้อุณหภูมิและความชื่น (DHT22)</span></p>
+<p><span style="font-size: 16pt; font-family: 'TH SarabunPSK', sans-serif; color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - ตัวตรวจรู้อุณหภูมิ (DS18B20)</span></p>
+<p><span style="font-size: 16pt; font-family: 'TH SarabunPSK', sans-serif; color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - ตัวตรวจรู้ความเข้มแสง (Ambient Light)</span></p>
+<p><span style="font-size: 16pt; font-family: 'TH SarabunPSK', sans-serif; color: #000000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - ตัวตรวจรู้ความเร็วลม (Wind Speed)</span></p>
+<p><span style="font-size: 16pt; font-family: 'TH SarabunPSK', sans-serif; color: #000000;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>โมดูลเซ็นเซอร์สำหรับวัดน้ำ</strong></span></p>
+<p><span style="font-size: 16pt; font-family: 'TH SarabunPSK', sans-serif; color: #000000;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;- ตัวตรวจรู้ความเป็น กรด &ndash; ด่าง น้ำ (pH)</span></p>
+<p><span style="color: #000000; font-size: 16pt;"><span style="font-family: 'TH SarabunPSK', sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-family: 'TH SarabunPSK', sans-serif;">- อัตราไหลของน้ำ (Water Flow)</span></span></p>
+<p style="line-height: 115%;"><span style="color: #000000; font-size: 16pt;"><span style="line-height: 115%; font-family: 'TH SarabunPSK', sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="line-height: 115%; font-family: 'TH SarabunPSK', sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - </span><span style="line-height: 115%; font-family: 'TH SarabunPSK', sans-serif;">ตัวตรวจรู้ระดับน้ำ </span><span style="line-height: 115%; font-family: 'TH SarabunPSK', sans-serif;">(</span><span style="line-height: 115%; font-family: 'TH SarabunPSK', sans-serif;">Water Liquid Level Sensor)</span></span></p>
+<p><span style="font-size: 16pt; font-family: 'TH SarabunPSK', sans-serif; color: #000000;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>โมดูลสื่อสารไร้สาย WiFi 2.4 GHz (NRF24L01)</strong></span></p>
+<p><span style="font-size: 16pt; font-family: 'TH SarabunPSK', sans-serif; color: #000000;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>จอแสดงผล LCD ขนาด 6x12&nbsp;</strong></span></p>
+<p><span style="font-size: 16pt; font-family: 'TH SarabunPSK', sans-serif; color: #000000;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<strong>Relay 220VAC 4 Channel</strong></span></p>
+
+  <table border="0" align="center">
+  <td align="center" >
+    <div class="card">
+      <div class="container" id="Smart Farm Block Diagram">
+        <h3><b>Smart Farm Block Diagram</b></h3> 
+      </div>
+      <img src="img/Smart Farm Diagram.jpeg" alt="Smart-Farm-Diagram">
+      <div class="container">
+        <h4><b>Smart Farm Block Diagram เป็นบล็อกไดอะแกรมการนำไปใช้โดยรวม</b></h4> 
+      </div>
+    </div>
+  </td>
+  </table>
+
+ 
+
+<br><br><br>
+
+<!--   <table border="0" align="center">
+    <td align="center">
+      <img src="img/smart-farm-board2.jpg" alt="smart-board2" width="500" height="400">
+      <img src="img/smart-farm-board3.png" alt="smart-board3" width="500" height="500">
+    </td>
+  </table> -->
+
+  <table border="0" align="center">
+    <td align="center">
+      <div class="container" id="Smart-Farm Board">
+        <h2><b>Smart Farm Board</b></h2> 
+      </div>
+      <img src="img/smart-farm-board7.jpg" alt="smart-board4" width="700" height="500">
+      <img src="img/smart-farm-board6.jpg" alt="smart-board5"  width="700" height="500">
+      
+    </td>
+  </table>
+
+
+  <br>
+  <br>
+  <br>
+  <table border="0" align="center">
+    <td align="center">
+      <div id="ArduinoNano/NRF24L01"><h3>ArduinoNano/NRF24L01</h3></div>
+    </td>
+  </table>
+  <table border="0" align="center">
+  <td align="center" >
+    <div class="card">
+      <img src="img/ArduinoNano.NRF24L01.png" alt="ArduinoNano/NRF24L01">
+      <div class="container">
+        <h4><b>ArduinoNano/NRF24L01 สำหรับติดต่อสื่อสารไร้สายผ่านสัญญาณวิทยุ 2.4GHz</b></h4> 
+      </div>
+    </div>
+  </td>
+  </table>
+  <br>
+  <br>
+  <br>
+  <table border="0" align="center">
+    <td align="center">
+      <div id="NodeMCU/ESP8266 Module WiFi"><h3>NodeMCU/ESP8266 Module WiFi</h3></div>
+    </td>
+  </table>
+  <table border="0" align="center">
+  <td align="center" >
+    <div class="card">
+      <img src="img/NodeMCU.ESP8266.png" alt="ArduinoNano/NRF24L01">
+      <div class="container">
+        <h4><b>NodeMCU/ESP8266 Module WiFi สำหรับติดต่อสื่อสารไร้สายผ่านเครือข่ายอินเตอร์เน็ต</b></h4> 
+      </div>
+    </div>
+  </td>
+  </table>
+  <br>
+  <br>
+  <br>
+
+
+</div>
+
+</body>
+</html>

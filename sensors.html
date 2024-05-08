@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" type="bmg/png/icon" href="icon/smart-farm-logo.png" />
+  <meta charset="utf-8">
+  <title>Sensors</title>
+<style>
+
+  body {
+      margin: 0;
+       
+  }
+  ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      width: 15%;
+      background-color: #333;
+      position: fixed;
+      height: 100%;
+      overflow: auto;
+  }
+
+  li a {
+      display: block;
+      color: white;
+      padding: 8px 16px;
+      text-decoration: none;
+  }
+
+  li a.active {
+      background-color: #555;
+      color: white;
+  }
+
+  li a:hover:not(.active) {
+      background-color: #555;
+      color: white;
+  }
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a class="active" href="/">Home</a></li>
+  <li><a href="#Water Flow">Water Flow</a></li>
+  <li><a href="#pH">pH </a></li>
+  <li><a href="#DHT">DHT Temp and Humid</a></li>
+  <li><a href="#Ambient Light BH1750">Ambient Light BH1750</a></li>
+  <li><a href="#LDR">LDR </a></li>
+  <li><a href="#Co2">Co2 </a></li>
+  <li><a href="#Co2 MG811">Co2 MG811</a></li>
+  <li><a href="#Wind Speed">Wind Speed</a></li>
+  <li><a href="#Wind Gauge">Wind Gauge</a></li>
+  <li><a href="#Wind Vane">Wind Vane</a></li>
+  <li><a href="#Soil Moisture">Soil Moisture</a></li>
+  <li><a href="#DS18B20 Temp">DS18B20 Temp</a></li>
+  <li><a href="#Water Liquid Level">Water Liquid Level</a></li>
+
+</ul>
+
+<div style="margin-left:15%;padding:1px 16px;height:1000px;">
+  <h2>Sensors เซ็นเซอร์สำหรับตรวจรู้สภาพดินและอากาศ</h2>
+  
+  <div id="Water Flow"><h3>Water Flow sensor</h3></div>
+  <img src="img/Sensor-Water-Flow.jpg" width="200" height="200">
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">Water Flow Sensor คือ Sensor ที่ทำหน้าที่ในการวัดอัตราการไหลของของเหลว ที่ไหลผ่านตัว Sensor หรือนำ</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">ค่าที่วัดได้มาคำนวณเป็นปริมาณน้ำก็ได้ครับ โดยปกติแล้วค่าที่วัดได้จะออกมาเป็นสัญญาณ Pulse (เกือบทุกรุ่นจะ</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">เหมือนกัน) โดยปกติแล้วเราจะใช้ขา EXT Interrupt รับค่า เหมือนๆกับ Encoder</span></p>
+  <p style="padding-left: 30px;">&nbsp;</p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">คุณสมบัติทางเทคนิค</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">1. มีข้อต่อสำหรับทางน้ำเข้าและทางน้ำออก</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">เมื่อน้ำไหลเข้ามาในตัวตรวจจับแกนหมุนที่อยู่ภายในจะหมุน ทำให้แม่เหล็กที่ติดอยู่กับใบพัดของแกนหมุนนั้น</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">3. เกิดการเคลื่อนที่ผ่านตัวตรวจจับฮอลล์เอฟเฟ็กต์ทำให้เกิดสัญญาณพัลส์ตามความเร็วของกระแสน้ำที่ไหลเข้ามาในตัวตรวจจับ</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">4. แรงดันใช้งานคือ 5-18V กินกระแสไฟฟ้า 15mA ที่ไฟเลี้ยง +5V น้ำหนักรวม 43 กรัม</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">5. ตรวจจับอัตราการไหลของน้ำได้ในช่วง 0.5 ถึง 60 ลิตรต่อนาที</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">6. ย่านความกดอากาศที่ใช้งานได้คือ ต่ำกว่า 1.2Mpa</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">7. อุณหภูมิของน้ำที่ไหลผ่านต้องอยู่ในย่าน 0 ถึง 80 องศาเซลเซียส</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">8. ความผิดพลาดในการตรวจจับน้อยกว่า 3 %</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">9. ทางน้ำเข้าออกมีเส้นผ่านศูนย์กลาง 1/2 นิ้ว มีเกลียวสำหรับขันยึดกับท่อ</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">10. ที่สายเอาต์พุตเมื่อนำไปต่อกับไมโครคอนโทรลเลอร์ควรต่อตัวต้านทาน 10k&Omega;&nbsp;พูลอัป</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">11. เพื่อกำหนดสถานะลอจิกที่แน่นอนในขณะที่ยังไม่มีการตรวจจับให้เป็นลอจิก "1"</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">12. เมื่อเกิดการตรวจจับสายเอาต์พุตจะให้สัญญาณเอาต์พุตเป็นพัลส์ที่แอกตีฟด้วยลอจิก</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">"0"</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">13. สัญญาณพัลส์เอาต์พุตมีค่าดิวตี้ไซเคิลในช่วง 40 ถึง 60%</span></p>
+
+  <br>
+  <br>
+  <br>
+
+  <div id="pH"><h3>pH sensor</h3></div>
+  <img src="img/Sensor-pH.jpg" width="400" height="200">
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">ตัวตรวจรู้วัดความเป็นกรด &ndash; เบส</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">การตรวจวัดพีเอชน้ำ (pH) ความเป็นกรด-เบส หรือค่าพีเอช (pH) เป็นค่าที่บอกปริมาณของกรดที่ปนอยู่ในน้ำ ค่าพีเอชมีอิทธิพลต่อปฏิกิริยาเคมีส่วนใหญ่ที่เกิดขึ้นในน้ำ น้ำบริสุทธิ์ที่ปราศจากสิ่งปนเปื้อน (และต้องไม่สัมผัสกับอากาศด้วย) จะมีค่าพีเอชเท่ากับ 7 น้ำซึ่งมีสิ่งเจือปนอยู่ด้วยอาจจะมีค่าพีเอชเท่ากับ 7 ได้ ถ้าน้ำนั้นมีกรดและเบสอยู่ในปริมาณที่เท่ากันและสมดุลกัน ถ้าน้ำมีค่าพีเอชต่ำกว่า 7 แสดงว่า น้ำนั้นมีปริมาณกรดอยู่มากเกินจุดที่สมดุล แต่ถ้ามีค่าพีเอชมากกว่า 7 แสดงว่าในน้ำนั้นมีเบสมากเกินจุดที่สมดุล</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">โดยธรรมชาติแล้ว น้ำฝนที่ไม่มีสิ่งปนเปื้อนจะมีค่าพีเอชอยู่ระหว่าง 5 &ndash; 6 ดังนั้นแม้ว่าน้ำฝนที่ตกในบริเวณที่มีภาวะมลพิษน้อยที่สุดบนพื้นโลก ก็ยังคงมีส่วนเป็นกรดอยู่นั่นเอง ทั้งนี้เนื่องจากแก๊สคาร์บอนไดออกไซด์จากอากาศสามารถละลายได้ในหยดน้ำฝน น้ำกลั่นที่สัมผัสกับอากาศก็จะมีค่าพีเอชประมาณ 5 &ndash; 6 เช่นกัน ฝนกรดส่วนใหญ่มักจะมีค่าพีเอชประมาณ 4 แต่ถ้าเป็นหมอกในเขตเมืองอาจจะมีค่าพีเอชต่ำกว่า 2 ก็ได้ น้ำในทะเลสาบและลำธารส่วนใหญ่จะมีค่าพีเอชอยู่ระหว่าง 6.5 &ndash; 8.5 เราอาจจะพบน้ำซึ่งมีสภาพเป็นกรดเองโดยธรรมชาติในบริเวณที่มีสินแร่บางชนิดอยู่ในดิน (เช่น ซัลไฟด์) การทำเหมืองแร่อาจจะมีสินแร่บางอย่างที่ทำให้เกิดกรดถูกปล่อยลงสู่แหล่งน้ำเช่นเดียวกัน น้ำที่มีสภาพเป็นเบสเองโดยธรรมชาติมักจะพบเฉพาะในดินที่มีสินแร่บางชนิดปนอยู่มาก เช่น ปูนขาว หรือหินปูน</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">ค่าพีเอชในน้ำจะมีอิทธิพลสูงต่อสิ่งมีชีวิตที่อยู่ในแหล่งน้ำนั้น กบ และสัตว์ครึ่งน้ำครึ่งบก มักจะไวต่อน้ำที่มีค่าพีเอชต่ำๆ แมลง สัตว์ครึ่งน้ำครึ่งบก และปลา จะไม่สามารถดำรงชีวิตในแหล่งน้ำที่น้ำมีค่าพีเอชต่ำกว่า 4 ได้การตรวจวัดค่าพีเอชสามารถทำได้หลายวิธี เช่น ใช้กระดาษวัดค่าพีเอช (pH Paper) ปากกาวัดค่าพีเอช (pH Pen) เครื่องมือวัดค่าพีเอช (pH Meter) ซึ่งในกิจกรรมนี้จะตรวจวัดค่าพีเอช โดยใช้ปากกาวัดค่าพีเอช และเครื่องวัดค่าพีเอช ซึ่งจะแสดงค่าที่ถูกต้องแม่นยำมากกว่าการใช้กระดาษวัดค่าพีเอช</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">รายละเอียด PH Sensor</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; Analog pH Meter (pH Sensor) เป็นเซ็นเซอร์สำหรับวัดความเป็น กรด-เบส ของสารละลายโดยค่าที่วัดได้จะอยู่ในช่วง 0 &ndash; 14 pH output เป็นแบบ Analog (0-1023) ใช้ไฟเลี้ยง 5V </span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">SPECIFICATION</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">Module Power : 00V</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">Module Size : 43 x 32mm</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">Measuring Range :0 - 14pH</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">Measuring Temperature: 0 - 60 ℃</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">Accuracy : &plusmn; 1pH (25 ℃)</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">Response Time : &le; 1min</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">pH Sensor with BNC Connector</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">pH0 Interface ( 3 foot patch )</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">Gain Adjustment Potentiometer</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">Power Indicator LED</span></p>
+
+  <br>
+  <br>
+  <br>
+
+  <div id="DHT"><h3>DHT Temp&amp;Humid sensor</h3></div>
+  <img src="img/Sensor-DHT22.jpg" width="350" height="300">
+  <p style="text-indent: 36pt; background: white; text-align: left; padding-left: 30px;"><span style="font-family: arial, helvetica, sans-serif; font-size: 12pt;">ตัวตรวจรู้วัดอุณหภูมิและความชื่น หรือ Temperature Sensor / Humidity Sensor&nbsp; คืออุปกรณ์สำหรับตรวจวัดอุณหภูมิ หรือความชื้นในบริเวณที่ใช้งาน ซึ่งเหมาะสำหรับห้องควบคุมอุณหภูมิความชื้น, อุตสาหกรรมอาหาร,ห้องอบ, ห้องแช่เย็น,ห้องแล็ป,ห้องควบคุมระบบคอมพิเตอร์, Clean Room, Warehouse ที่มี ปัญหาในการควบคุมอุณหภูมิหรือความชื้น ทำให้เกิดความเสียหายต่ออุปกรณ์ หรือวัสดุที่ต้องการควบคุมอุณหภูมิ ความชื้น เซนเซอร์วัดอุณหภูมิ / ความชื้น ที่ถูกคัดสรรมาเป็นอย่างดีของบริษัท แสงชัยมิเตอร์ จำกัด สามารถช่วยให้ วัดค่าอุณหภูมิ ความชื้นได้อย่างถูกต้อง แม่นยำ ซึ่งแตกต่างจากเซนเซอร์วัดอุณหภูมิ / ความชื้นแบบอื่นในท้องตลาดตรงที่ มีรูปแบบการติดตั้งที่หลากหลายให้เลือกใช้ สามารถต่อร่วมกับจอแสดงผล หรือเครื่องควบคุมได้ง่าย</span></p>
+  <p style="background: white; text-align: left; padding-left: 30px;"><span style="font-family: arial, helvetica, sans-serif; font-size: 12pt;">รายละเอียด DHT22&nbsp;เซนเซอร์ วัดอุณหภูมิ+ความชื้น อย่างดี DHT22 สำหรับ Arduino</span></p>
+  <p style="margin-left: 18pt; background: white; text-align: left; padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Accuracy humidity&nbsp; &nbsp;+-2%RH (Max +-5%RH); temperature +-0.2Celsius</span></p>
+  <p style="margin-left: 18pt; background: white; text-align: left; padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Resolution or sensitivity humidity 0.1%RH; temperature 0.1Celsius</span></p>
+  <p style="margin-left: 18pt; background: white; text-align: left; padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Repeatability humidity +-1%RH; temperature +-0.2Celsius</span></p>
+  <p style="margin-left: 18pt; background: white; text-align: left; padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Humidity hysteresis&nbsp; +-0.3%RH</span></p>
+  <p style="margin-left: 18pt; background: white; text-align: left; padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Long-term Stability +-0.5%RH/year</span></p>
+  <p style="margin-left: 18pt; background: white; text-align: left; padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sensing period Average: 2s</span></p>
+  <p style="margin-left: 18pt; background: white; text-align: left; padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Interchangeability fully interchangeable</span></p>
+  <p style="margin-left: 18pt; background: white; text-align: left; padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp; Features DHT22:</span></p>
+  <p style="margin-left: 18pt; background: white; text-align: left; padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.3-6V Input</span></p>
+  <p style="margin-left: 18pt; background: white; text-align: left; padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1-1.5mA measuring current</span></p>
+  <p style="margin-left: 18pt; background: white; text-align: left; padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 40-50 uA standby current</span></p>
+  <p style="margin-left: 18pt; background: white; text-align: left; padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Humidity from 0-100% RH</span></p>
+  <p style="margin-left: 18pt; background: white; text-align: left; padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 40-80 degrees C temperature range</span></p>
+  <p style="margin-left: 18pt; background: white; text-align: left; padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +-2% RH accuracy</span></p>
+  <p style="margin-left: 18pt; background: white; text-align: left; padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +-0.5 degrees C</span></p>
+  <p style="text-align: justify; text-justify: inter-cluster; text-indent: 36.0pt; background: white;">&nbsp;</p>
+
+  <br>
+  <br>
+  <br>
+
+  <div id="Ambient Light BH1750"><h3>Ambient Light BH1750</h3></div>
+  <img src="img/Sensor-Ambient-Light-BH1750.jpg"  width="300" height="400">
+  <p><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&nbsp; &nbsp; &nbsp; BH1750 มีดิจิตอลไอซีที่วัดความสว่างสำหรับสื่อสารแบบบัส I2C ซึ่งเซนเซอร์นี้ เหมาะกับการวัดแสงรอบๆ อุปกรณ์ เช่น วัดความสว่างรอบๆโทรศัพท์มือถือเพื่อนำไปหรับแสงไฟบนจอ LCD และปุ่มกดของโทรศัพท์มือถือ โดยเซนเซอร์วัดความสว่างนี้มีความละเอียดของแสงตั้งแต่ช่วง 1-65535 ลักซ์ (Lux) และรายละเอียดอื่นๆของเซนเซอร์มีดังนี้</span><br /><br /></p>
+  <h4><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&nbsp; &nbsp; คุณสมบัติทางเทคนิค</span></h4>
+  <div>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">การสื่อสารเป็นบัส I2C</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">มีการตอบสนองต่อแสงใกล้เคียงกับตามนุษย์</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">วัดความสว่างเป็นดิจิตอล</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">มีช่วงที่วัดความสว่างกว้างและความละเอียดสูง (1-65535 lx)</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">ใช้กระแสต่ำ เพราะมีโหมดลดการใช้พลังงาน</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">มีการกรองสัญญาณรบกวนที่ 50Hz / 60 Hz</span></p>
+  </div>
+
+
+  <br>
+  <br>
+  <br>
+
+  <div id="LDR"><h3>LDR sensor</h3></div>
+  <img src="img/Sensor-LDR.jpg" width="360" height="300">
+  <table style="margin-left: 30px;" border="0" width="770" cellspacing="0" cellpadding="0" align="center">
+  <tbody>
+  <tr>
+  <td class="style_blue_big" valign="top" width="770">
+  <table class="style21" style="height: 646px;" border="0" width="770" cellspacing="0" cellpadding="0">
+  <tbody>
+  <tr style="height: 40px;">
+  <td style="width: 768.021px; height: 40px; padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">LDR (Light-Dependent Resistor) หรือ Photoresistors คือตัวต้านทานปรับค่าได้ตามความเข้มของแสงที่ตกกระทบบนหน้าสัมผัสของมัน</span></td>
+  </tr>
+  <tr style="height: 20px; padding-left: 30px;">
+  <td class="style21" style="width: 768.021px; height: 20px; padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">ความต้านทานจะเปลี่ยนตามความเข้มของแสงดังนี้</span></td>
+  </tr>
+  <tr style="height: 20px; padding-left: 30px;">
+  <td class="style21" style="width: 768.021px; height: 20px; padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&bull; แสงน้อย ความต้านทานมาก</span></td>
+  </tr>
+  <tr style="height: 20px; padding-left: 30px;">
+  <td class="style21" style="width: 768.021px; height: 20px; padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&bull; แสงมาก ความต้านทานน้อย</span></td>
+  </tr>
+  <tr style="height: 20px; padding-left: 30px;">
+  <td class="style21" style="width: 768.021px; height: 20px; padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">เมื่อไม่มีแสงตกกระทบ ค่าความต้านทานอาจมากถึงหลักล้านถึงสิบล้านโอห์ม (0.5 - 10M&Omega; โดยประมาณ)</span></td>
+  </tr>
+  <tr style="height: 40px; padding-left: 30px;">
+  <td class="style21" style="width: 768.021px; height: 40px; padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">เมื่อมีแสงค่าความต้านทานจะลดลงตามความเข้มแสง (5 - 10 K&Omega;) แต่ถ้าหากแสงเข้มมากๆเช่น แสงแฟลช ค่าความต้านทานอาจเหลืออยู่เพียงหลักร้อยโอห์มเท่านั้น</span></td>
+  </tr>
+  <tr style="height: 17px; padding-left: 30px;">
+  <td class="style21" style="width: 768.021px; height: 17px; padding-left: 30px;">&nbsp;</td>
+  </tr>
+  <tr style="height: 20px; padding-left: 30px;">
+  <td class="style21" style="width: 768.021px; height: 20px; padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">ตัวอย่างค่าความต้านทานที่วัดได้ด้วยโอห์มมิเตอร์อย่างคร่าวๆ</span></td>
+  </tr>
+  <tr style="height: 295px; padding-left: 30px;">
+  <td class="style21" style="width: 768.021px; height: 295px; padding-left: 30px;">
+  <table style="margin-left: 30px;" border="0" width="100%" cellspacing="0" cellpadding="10">
+  <tbody style="padding-left: 30px;">
+  <tr style="padding-left: 30px;">
+  <td class="style50" style="width: 34.1146%; padding-left: 30px;" bgcolor="#4BA9DC"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">ชนิดของแสง</span></td>
+  <td class="style50" style="width: 41.7969%; padding-left: 30px;" bgcolor="#4BA9DC"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">ระยะห่างจากแหล่งกำเนิดแสง</span></td>
+  <td class="style50" style="width: 23.9583%; padding-left: 30px;" bgcolor="#4BA9DC"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">ความต้านทาน</span></td>
+  </tr>
+  <tr style="padding-left: 30px;">
+  <td style="width: 34.1146%; padding-left: 30px;" bgcolor="#eeeeee"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">ห้องมืดทึบ</span></td>
+  <td style="width: 41.7969%; padding-left: 30px;" bgcolor="#eeeeee"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">-</span></td>
+  <td style="width: 23.9583%; padding-left: 30px;" bgcolor="#eeeeee"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&gt; 1 M&Omega;</span></td>
+  </tr>
+  <tr style="padding-left: 30px;">
+  <td style="width: 34.1146%; padding-left: 30px;" bgcolor="#dddddd"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">ห้องสว่าง (เปิดไฟ)</span></td>
+  <td style="width: 41.7969%; padding-left: 30px;" bgcolor="#dddddd"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&gt; 2 m</span></td>
+  <td style="width: 23.9583%; padding-left: 30px;" bgcolor="#dddddd"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&lt; 40 K&Omega;</span></td>
+  </tr>
+  <tr style="padding-left: 30px;">
+  <td style="width: 34.1146%; padding-left: 30px;" bgcolor="#EEEEEE"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">ห้องสว่าง</span></td>
+  <td style="width: 41.7969%; padding-left: 30px;" bgcolor="#EEEEEE"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&lt; 1 m</span></td>
+  <td style="width: 23.9583%; padding-left: 30px;" bgcolor="#EEEEEE"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&lt; 20 K&Omega;</span></td>
+  </tr>
+  <tr style="padding-left: 30px;">
+  <td style="width: 34.1146%; padding-left: 30px;" bgcolor="#DDDDDD"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">ห้องสว่าง</span></td>
+  <td style="width: 41.7969%; padding-left: 30px;" bgcolor="#DDDDDD"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&lt; 10 cm</span></td>
+  <td style="width: 23.9583%; padding-left: 30px;" bgcolor="#DDDDDD"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&lt; 1 K&Omega;</span></td>
+  </tr>
+  <tr style="padding-left: 30px;">
+  <td style="width: 34.1146%; padding-left: 30px;" bgcolor="#EEEEEE"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">แสงแฟลช</span></td>
+  <td style="width: 41.7969%; padding-left: 30px;" bgcolor="#EEEEEE"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&lt; 10 cm</span></td>
+  <td style="width: 23.9583%; padding-left: 30px;" bgcolor="#EEEEEE"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&lt; 100 &Omega;</span></td>
+  </tr>
+  <tr style="padding-left: 30px;">
+  <td style="width: 34.1146%; padding-left: 30px;" bgcolor="#DDDDDD"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">แสงอาทิตย์ยามบ่าย</span></td>
+  <td style="width: 41.7969%; padding-left: 30px;" bgcolor="#DDDDDD"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">-</span></td>
+  <td style="width: 23.9583%; padding-left: 30px;" bgcolor="#DDDDDD"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&lt; 20 &Omega;</span></td>
+  </tr>
+  </tbody>
+  </table>
+  </td>
+  </tr>
+  <tr style="height: 17px; padding-left: 30px;">
+  <td class="style21" style="width: 768.021px; height: 17px; padding-left: 30px;">&nbsp;</td>
+  </tr>
+  <tr style="height: 40px; padding-left: 30px;">
+  <td class="style21" style="width: 768.021px; height: 40px; padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">จะเห็นได้ว่านอกชนิดของแสงแล้ว ระยะห่างจากแหล่งกำเนิดแสงก็จะมีผลกับความเข้มแสงเหมือนกัน จึงมีผลกับค่าความต้านด้วย ยกเว้นแสงอาทิตย์ ที่มีค่าความเข้มสูงมากแม้ระยะทางจะห่างไกล</span></td>
+  </tr>
+  <tr style="height: 17px; padding-left: 30px;">
+  <td class="style21" style="width: 768.021px; height: 17px; padding-left: 30px;">&nbsp;</td>
+  </tr>
+  <tr style="height: 20px; padding-left: 30px;">
+  <td class="style21" style="width: 768.021px; height: 20px; padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;"><strong>การนำไปใช้</strong></span></td>
+  </tr>
+  <tr style="height: 60px; padding-left: 30px;">
+  <td class="style21" style="width: 768.021px; height: 60px; padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">จากคุณสมบัติดังกล่าวของ LDR เราจึงนำมันไปใช้ในงานที่มีความเกี่ยวข้องกับการควบคุมอุปกรณ์ไฟฟ้าด้วยแสง ทั้งเอาไปต่อใช้เป็นตัวต้านทานโดยตรง หรือ นำไปประยุกต์เป็นเซนเซอร์รับแสงก็ได้ ด้วยความเร็วในการตอบสนองที่ไวมาก เพียง 0.03 วินาที ที่สำคัญราคาถูกมาก เมื่อเทียบกับเซนเซอร์แสงชนิดอื่นๆ</span></td>
+  </tr>
+  </tbody>
+  </table>
+  </td>
+  </tr>
+  </tbody>
+  </table>
+
+  <br>
+  <br>
+  <br>
+
+  <div id="Co2"><h3>Co2 sensor</h3></div>
+  <img src="img/Sensor-Co2.jpg" width="300" height="300">
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">MH-Z14 CO2 NDIR Gas Sensor เป็น CO2 Gas Concentration Module ประเภท Non-Dispersive Infrared (NDIR) ซึ่งให้ความแม่นยำในการตรวจวัดปริมาณก๊าซคาร์บอนไดออกไซด์ ช่วงการวัดอยู่ที่ 0 &ndash; 5000 ppm นอกจากนี้ตัวโมดูลได้ทำการ calibration ค่ามาให้แล้ว ผู้ใช้งานสามารถ Interface กับ MCU ผ่านทาง Analog Output, PWM, Serial ของตัวโมดูลได้</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">Feature:</span><br /><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&bull; พร้อมใช้งาน ไม่ต้องต่อวงจรเพิ่ม และไม่ต้องทำ Calibration อีก</span><br /><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&bull; ให้ Output เป็น Analog, PWM , Serial (Digital Format)&nbsp;</span><br /><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&bull; Detection Range: 0 - 5000 ppm CO2 (Carbon Dioxide)</span><br /><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&bull; Accuracy: &plusmn;50ppm</span><br /><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&bull; Built-in Temperature Compensation มั่นใจในการอ่านค่าในทุก ๆ ย่านอุณหภูมิ</span><br /><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&bull; ขนาดกะทัดรัด ติดตั้งง่าย ด้วย Dimensions ขนาด 57.5&times;34.7&times;16mm (LxWxH) พร้อมรูเจาะยึดน๊อต</span><br /><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&bull; Application Idea เช่น precision monitoring equipment, air conditioning equipment, research projects ฯลฯ</span></p>
+  <p>&nbsp;</p>
+
+  <br>
+  <br>
+  <br>
+
+  <div id="Co2 MG811"><h3>Co2 MG811</h3></div>
+  <img src="img/Sensor-Co2-MG811.jpg"  >
+  <p style="padding-left: 30px;"><strong>MG-811 Carbon Dioxide CO2 Gas Sensor</strong></p>
+  <p style="padding-left: 30px;">&nbsp; &nbsp; &nbsp; &nbsp; CO2 Sensor เป็น Sensor ตรวจจับก๊าซคาร์บอนไดออกไซด์ (CO2) เป็น Sensor แบบ Metal Oxide Sensor ซึ่งต้องให้ความร้อนที่ตัวถังจนถึงระดับที่กำหนด (ด้วยวิธีจ่าย Power Supply) จะทำให้เกิดไอความร้อน และแยกก๊าซ CO2 ออกจากอากาศทั่ว ๆ ไป</p>
+  <p style="padding-left: 30px;"><strong>ข้อมูล MG-811 Carbon Dioxide CO2 Gas Sensor</strong></p>
+  <p style="padding-left: 30px;">&nbsp; &nbsp; &nbsp; &nbsp;CO2 Sensor, สามารถวัดค่าได้กว้าง, รวมไปถึงสามารถตรวจสภาพอากาศได้, นำไปใช้เป็นสัญญาณแจ้งเตือนเมื่อเกิดควัน, ดีต่อการนำไปใช้ในระบบโรงเรือน เป็นต้น. เซ็นเซอร์ใช้งานได้ง่ายเล็กกะทัดรัดพกพาไปได้สะดวก.</p>
+  <p style="padding-left: 30px;"><span style="color: #000000; font-size: 11pt;"><strong>คุณสมบัติ :</strong></span><br />- มีสัญญานออกเอาท์พุต<br />- สามารถใช้เอาท์พุตได้ทั้งอนาลอก และ ดิจิตอล<br />- สัญญาณเอาท์พุตแบบดิจิตอลมาตรฐาน TTL อยู่ในระดับต่ำ<br />- สัญญาณอนาลอกอยู่ในช่วง : 0-2 โวล์ท<br />- มีความไวต่อสูง<br />- ผลตอบสนองได้รวดเร็ว<br /><span style="color: #0000ff;"><strong><br /><span style="font-size: 11pt; color: #000000;">รายละเอียดอุปกรณ์ :</span></strong></span><br />- ขนาด : 32*22*30mm<br />- ซิฟหลัก : LM393, CO2 Sensor probe<br />- ใช้แรงดันทำงานที่ : DC6V<br />- ช่วงที่วัดได้ : 0~10000ppm</p>
+
+  <br>
+  <br>
+  <br>
+
+  <div id="Wind Speed"><h3>Wind Speed sensor</h3></div>
+  <img src="img/Sensor-Wind-Speed.jpg" width="400" height="300">
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">เซ็นเซอร์วัดความเร็วลม</span><br /><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ลมจะเคลื่อนที่ผลักถ้วยวัดความเร็วลม ซึ่งจะทำให้เกิดการหมุนแม่เหล็ก แม่เหล็กจะทำหน้าที่ปิดสวิทช์ ในการหมุนแต่ละครั้งซึ่งจะมีผลต่อการส่งออก </span><br /><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">เปรียบเสมือนสวิทช์หรือรีเรย์ โดยเราสามารถใช้วิธีการ ขัดจังหวะหรือ Interrupt การทำงานของไมโครคอนโทรลเลอร์ เพื่อนับรอบการหมุนของเซ็นเซอร์</span><br /><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">ในเมื่อมีการนับของการขัดจังหวะ 1 ครั้งคือจะได้ค่าความเร็วลมที่ 1.492 mph = 1 สวิทช์ปิด / วินาที สำหรับผู้ที่อยู่ในเมตริกคือ 2.4 กม. / ชม.</span></p>
+  
+
+  <br>
+  <br>
+  <br>
+
+  <div id="Wind Gauge"><h3>Wind Gauge sensor</h3></div>
+  <img src="img/Sensor-Wind-Gauge.jpg" width="300" height="300">
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">เซ็นเซอร์วัดปริมาณน้ำฝน</span><br /><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;เซ็นเซอร์เป็นตัวกักเก็บน้ำเมื่อมีปริมาณมากจะทำให้ตัวกักเก็บน้ำเทน้ำเทออกหมายความว่า ปิดสวิทช์ 1 ครั้ง ปริมาณของน้ำฝนในแต่ละ 0.011 นิ้ว </span><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">หรือ 0.2794 มิลลิเมตร หรือได้ปริมาณน้ำฝนต่อการหยด 1 ครั้งที่ 5mL จะทำให้ตัวกักเก็บน้ำฝนนั้นเอียง โดยเราสามารถใช้วิธีการ ขัดจังหวะหรือ Interrupt การทำงานของไมโครคอนโทรลเลอร์ </span><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">เพื่อให้ได้ปริมาณน้ำฝน</span></p>
+  
+
+  <br>
+  <br>
+  <br>
+
+  <div id="Wind Vane"><h3>Wind Vane sensor</h3></div>
+  <img src="img/Sensor-Wind-Vane.png" width="300" height="300">
+  <p style="padding-left: 30px;">เซ็นเซอร์วัดทิศทางลม<br />&nbsp; &nbsp; &nbsp; &nbsp; เซ็นเซอร์เป็นการใช้ความต้านทานระบุทิศทางของลม เมื่อลมกระทบที่หางของเซ็นเซอร์จะทำให้หัวหรือสวิทช์นั้นปิด ทำให้รู้ว่าเป็นทิศทางใดทิศทางนึ่ง<br />
+    <br>
+  <img src="img/Sensor-Wind-Vane-Switches.jpg" width="300" height="300">
+  <br>
+  <br>
+    &nbsp; &nbsp; &nbsp; &nbsp; จะเห็นได้ว่ามีทิศทางจำนวน 7 ต่ำแหน่งได้แก่ N,NE,E,SE,S,SW,W,NW<br />&nbsp; &nbsp; &nbsp; &nbsp; N (North) ทิศเหนือ<br />&nbsp; &nbsp; &nbsp; &nbsp; NE (Northeast) ทิศตะวันออกเฉียงเหนือ<br />&nbsp; &nbsp; &nbsp; &nbsp; E (East) ทิศตะวันออก<br />&nbsp; &nbsp; &nbsp; &nbsp; SE (Southeast) ทิศตะวันออกเฉียงใต้<br />&nbsp; &nbsp; &nbsp; &nbsp; S (South) ทิศใต้<br />&nbsp; &nbsp; &nbsp; &nbsp; SW (Southwest) ทิศตะวันตกเฉียงใต้<br />&nbsp; &nbsp; &nbsp; &nbsp; W (West) ทิศตะวันตก<br />&nbsp; &nbsp; &nbsp; &nbsp; NW (Northwest) ทิศตะวันตกเฉียงเหนือ</p>
+  <p style="padding-left: 30px;">เซ็นเซอร์ตัวนี้จำเป็นต้องเทียบกับเข็มทิศขณะติดตั้งเซ็นเซอร์ เพื่อความถูกต้องนั้นเอง</p>
+  
+
+  <br>
+  <br>
+  <br>
+
+  <div id="Soil Moisture"><h3>Soil Moisture sensor</h3></div>
+  <img src="img/Sensor-Soil-Moisture.jpg" width="400" height="300">
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;"><strong>เซ็นเซอร์วัดความชื้นในดิน</strong>&nbsp;<strong>Soil Moisture Sensor</strong>&nbsp;ใช้วัดความชื้นในดิน หรือใช้เป็นเซ็นเซอร์น้ำ สามารถต่อใช้งานกับไมโครคอนโทรลเลอร์โดยใช้อนาล็อกอินพุตอ่านค่าความชื้น หรือเลือกใช้สัญญาณดิจิตอลที่ส่งมาจากโมดูล สามารถปรับความไวได้ด้วยการปรับ&nbsp;Trimpot</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;"><strong>หลักการทำงาน</strong></span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">การใช้งาน จะต้องเสียบแผ่น PCB สำหรัลวัดลงดิน เพื่อให้วงจรแบ่งแรงดันทำงานได้ครบวงจร จากนั้นจึงใช้วงจรเปรียบเทียบแรงดันโดยใช้ไอซีออปแอมปเบอร์ LM393 เพื่อวัดแรงดันเปรียบเทียบกันระหว่างแรงดันดันที่วัดได้จากความชิ้นในดิน กับแรวดันที่วัดได้จากวงจรแบ่งแรงดันปรับค่าโดยใช้&nbsp;Trimpot หากแรงดันที่วัดได้จากความชิ้นของดิน มีมากกว่า ก็จะทำให้วงจรปล่อยลอจิก 1 ไปที่ขา D0 แต่หากความชิ้นในดินมีน้อย ลอจิก 0 จะถูกปล่อยไปที่ขา D0</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">ขา A0 เป็นขาที่ต้อโดยตรงกับวงจรที่ใช้วงความชื้นในดิน ซึ่งให้ค่าแรงดันออกมาตั้งแต่ 0 - 5V (ในทางอุดมคติ) โดยหากความชิ้นในดินมีมาก แรงดันที่ปล่อยออกไปก็จะน้อยตามไปด้วย ในลักษณะของการแปรผันกลับ</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;"><strong>การนำไปใช้งาน</strong></span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">หากนำไปใช้งานด้านการวัดความชื้นแบบละเอียด แนะนำให้ใช้งานขา A0 ต่อเข้ากับไมโครคอนโทรลเลอร์เพื่อวัดค่าแรงดันที่ได้ ซึ่งจะได้ออกมาใช้เปรียบเทียบค่าความชื้นได้ หากมีความชื้นน้อย แรงดันจะใกล้ 5V มาก หากความชิ้นมาก แรงดันก็จะลดต่ำลง</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;">หากต้องการนำไปใช้ในโปรเจคที่ไม่ต้องใช้วัดละเอียด เช่น โปรเจครดน้ำต้นไม้ ใช้ควบคุมปั้มน้ำให้รดน้ำต้นไม้อัตโนมัติ สามารถนำขา D0 ต่อเข้ากับทรานซิสเตอร์กำลังเพื่อสั่งให้ปั้มน้ำ หรือโซลินอยให้ทำงานเพื่อให้มีน้ำไหลมารดต้นไม้ได้เลย เมื่อความชิ้นในดินมีมากพอ จะปล่อยลอจิก 0 แล้วทรานซิสเตอร์จะหยุดนำกระแส ทำให้ปั้มน้ำหยุดปล่อยน้ำ</span></p>
+  
+
+  <br>
+  <br>
+  <br>
+
+  <div id="DS18B20 Temp"><h3>DS18B20 Temp sensor</h3></div>
+  <img src="img/Sensor-DS18B20-Temp.jpg" width="400" height="300">
+  <p style="padding-left: 30px;"><strong>Waterproof Temperature Sensor DS18B20 2 Meter เซนเซอร์วัดอุณหภูมิ DS18B20 แบบกันน้ำ สายยาว 2 เมตร</strong></p>
+  <p style="padding-left: 30px;">เซนเซอร์อุณหภูมิ ใช้ IC เบอร์ DS18B20 แบบกันน้ำได้ เหมาะสำหรับวัดอุณหภูมิในของเหลว สายยาว 200 เซนติเมตร มีไลบารีสำเร็จรูปพร้อมใช้งาน&nbsp;แถมฟรี R 4.7K สำหรับต่อใช้งานร่วมกัน<br /><strong><br />รายละเอียด Digital Temperature Temp Sensor Probe DS18B20 For Thermometer Waterproof 200CM</strong></p>
+  <p style="padding-left: 30px;">&nbsp;&nbsp;&nbsp; Power Supply Range: 3.0V to 5.5V</p>
+  <p style="padding-left: 30px;">&nbsp;&nbsp;&nbsp; Adjustable Resolution: 9 - 12</p>
+  <p style="padding-left: 30px;">&nbsp;&nbsp;&nbsp; Operating Temperature Range: -55&deg;C to +125&deg;C</p>
+  <p style="padding-left: 30px;">&nbsp;&nbsp;&nbsp; Output lead: Red (VCC), Black (GND), Yellow (DATA)</p>
+  <p style="padding-left: 30px;">&nbsp;&nbsp;&nbsp; Cable length: 200 cm</p>
+  <p style="padding-left: 30px;">&nbsp;&nbsp;&nbsp; Stainless Steel Tube Size: 6&times; 45mm</p>
+  
+
+  <br>
+  <br>
+  <br>
+
+  <div id="Water Liquid Level"><h3>Water Liquid Level sensor</h3></div>
+  <img src="img/Sensor-Water-Level-Liquid.png" width="400" height="300">
+  <br><br><br>
+  <p style="text-align: justify; text-justify: inter-cluster; text-indent: 49.65pt; line-height: 115%; tab-stops: 51.05pt 79.4pt 107.75pt 119.05pt 133.25pt;"><span style="font-size: 12pt; line-height: 115%; font-family: arial, helvetica, sans-serif;">Liquid Level Sensor เป็นสวิตช์ลูกลอยไฟฟ้าใช้วัดระดับน้ำหรือของเหลว Switch จะ On/Off ขึ้นอยู่กับระดับของเหลวสามารถต่อกับอุปกรณ์อื่นๆ เช่นต่อกับลำโพงให้ส่งเสียงเมื่อระดับน้ำสูงเกินหรือต่ำเกิน หรือต่อกับระบบปั๊มน้ำเพื่อให้ปั๊มทำงานหากระดับน้ำต่ำกว่าที่กำหนดและหยุดปั๊มหากระดับน้ำสูงถึงจุดที่กำหนด</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; line-height: 115%; font-family: arial, helvetica, sans-serif;">ข้อมูลเซนเซอร์ระดับน้ำ :</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; line-height: 115%; font-family: arial, helvetica, sans-serif;">1. อัตราการติดต่อสูงสุด: 10w</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; line-height: 115%; font-family: arial, helvetica, sans-serif;">2. การสลับแรงดันไฟฟ้าสูงสุด: 100V DC / AC</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; line-height: 115%; font-family: arial, helvetica, sans-serif;">3. กระแสไฟสลับสูงสุด: 0.5A</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; line-height: 115%; font-family: arial, helvetica, sans-serif;">4. แรงดันพังทลายสูงสุด: 220V DC / AC</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; line-height: 115%; font-family: arial, helvetica, sans-serif;">5. กระแสโหลดสูงสุด: 1.0A</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; font-family: arial, helvetica, sans-serif;"><span style="line-height: 115%;">6. ความต้านทานต่อการติดต่อสูงสุด: 100m</span><span style="line-height: 115%;">&Omega;</span></span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; line-height: 115%; font-family: arial, helvetica, sans-serif;">7. อุณหภูมิ: -10 &deg; C ~ + 85 &deg; C</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; line-height: 115%; font-family: arial, helvetica, sans-serif;">8. วัสดุลอยตัว: P.P</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; line-height: 115%; font-family: arial, helvetica, sans-serif;">9.วัสดุลูกลอยลอย: P.P</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; line-height: 115%; font-family: arial, helvetica, sans-serif;">10. ขนาดโดยรวม (L * W): 55 x 25 มม</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; line-height: 115%; font-family: arial, helvetica, sans-serif;">11. ความยาวสายเคเบิล: 30 ซม</span></p>
+  <p style="padding-left: 30px;"><span style="font-size: 12pt; line-height: 115%; font-family: arial, helvetica, sans-serif;">12. น้ำหนักสุทธิ: 16g</span></p>
+  
+
+  <br>
+  <br>
+  <br>
+
+</div>
+
+</body>
+</html>

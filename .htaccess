@@ -1,0 +1,32 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+
+# redirect to non-www
+#RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+#RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+# redirect to www
+#RewriteCond %{HTTP_HOST} !^www\.
+#RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+
+# redirect to https
+#RewriteCond %{HTTPS} off
+#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteRule ^(feed|menu|sitemap|BingSiteAuth)\.(xml|rss)$ /$1.php [L,QSA]
+RewriteRule ^(.*).rss$ /feed.php?module=$1 [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L,QSA]
+</IfModule>
+# cache 1 week
+<filesMatch ".(jpg|jpeg|png|gif|ico)$">
+#Header set Cache-Control "max-age=604800, public"
+</filesMatch>
+<filesMatch ".(css|js|ttf|woff|svg|eot)$">
+#Header set Cache-Control "max-age=604800, public"
+</filesMatch>
+<IfModule mod_headers.c>
+#Header set X-XSS-Protection "1; mode=block"
+</IfModule>

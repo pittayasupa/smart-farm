@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" type="bmg/png/icon" href="../icon/smart-farm-logo.png" />
+  <meta charset="utf-8">
+  <title>Guide</title>
+<style>
+
+  body {
+      margin: 0;
+  }
+  ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      width: 15%;
+      background-color: #333;
+      position: fixed;
+      height: 100%;
+      overflow: auto;
+  }
+
+  li a {
+      display: block;
+      color: white;
+      padding: 8px 16px;
+      text-decoration: none;
+  }
+
+  li a.active {
+      background-color: #555;
+      color: white;
+  }
+
+  li a:hover:not(.active) {
+      background-color: #555;
+      color: white;
+  }
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a class="active" href="/">Home</a></li>
+  <li><a href="#Get Started">Get Started</a></li>
+  <li><a href="#How to use Blockly GUI">How to use Blockly GUI</a></li>
+  <li><a href="#How to Copy code to clipboard">How to Copy code to clipboard</a></li>
+  <li><a href="#How to Discard">How to Discard</a></li>
+  <li><a href="#How to save project arduino file ino">How to save project arduino file ino</a></li>
+  <li><a href="#How to save projectXml">How to save projectXml</a></li>
+  <li><a href="#How to load projectXml">How to load projectXml</a></li>
+  <li><a href="#Example Serial Monitor Display">Example Serial Monitor Display</a></li>
+  <li><a href="#Example LCD Show RealTime Display">Example LCD Show RealTime Display</a></li>
+  <li><a href="#Example Max7219 Show RealTime Display">Example Max7219 Show RealTime Display</a></li>
+  <li><a href="#Example Arduino Nano Buildin LED">Example Arduino Nano Buildin LED</a></li>
+  <li><a href="#Example NodeMCU/ESP8266 SendAPI to ThinkSpeak">Example NodeMCU/ESP8266 SendAPI to ThinkSpeak</a></li>
+
+</ul>
+
+<div style="margin-left:15%;padding:1px 16px;height:1000px;">
+  <h2>Guide สำหรับผู้เริ่มต้นใช้งาน Smart GUI for agriculture control</h2>
+  <br><br>
+  <div id="Get Started"><h3>Get Started</h3></div>
+  <img src="https://is2-ssl.mzstatic.com/image/thumb/Purple71/v4/4e/72/c0/4e72c005-3211-88d5-6a96-8d021622d387/source/643x0w.jpg" width="400" height="300">
+  <p>Blockly คือ Editor ที่ใช้สำหรับเขียนโปรแกรมโดยใช้หลักการต่อบล๊อคคำสั่งที่ต้องลาก-วางคำสั่งเป็นลำดับต่อกันไปคล้ายตัวต่อเลโก้</p>
+  <p>เรียกอีกอย่างว่าเป็นโปรแกรมเสมือน ซึ่งพัฒนาจากการเขียนโปรแกรมเป็นบรรทัด มีจุดเด่นด้านการใช้กราฟิคช่วยให้ง่ายต่อการเรียนรู้และเข้าใจ</p>
+  <p>ตัวโปรแกรมเป็น web-based คือสามารถใช้งานผ่านเว็บเบราเซอร์ การใช้งานง่ายมากคือผู้ใช้สามารถลากบล๊อคมาต่อกันเป็นชุดคำสั่งเพื่อสร้างเป็นแอพพลิเคชั่น</p>
+  <p>ไม่ต้องใช้ทักษะด้านการพิมพ์และไม่ต้องเรียนรู้ syntax ให้ยุ่งยาก</p>
+  <br>
+  <p>การสร้างแอพแบบ blockly</p>
+  <p>จากมุมมองของผู้ใช้ Blockly เป็นวิชวลที่ใช้ในการสร้างโค้ด จากมุมมองของนักพัฒนา</p>
+  <p>ซอฟต์แวร์ Blockly เป็นกล่องข้อความที่มีรหัสที่ผู้ใช้สร้างขึ้นโดย syntactically</p>
+  <p>บล็อกสามารถส่งออกบล็อกไปยังหลายภาษารวมถึงตัวเลือกยอดนิยมเหล่านี้:</p>
+  <p>&rarr;&nbsp;JavaScript</p>
+  <p>&rarr;&nbsp;Python</p>
+  <p>&rarr;&nbsp;PHP</p>
+  <p>&rarr;&nbsp;Lua</p>
+  <br>
+  <p>ต่อไปนี้เป็นการวิเคราะห์ระดับสูงเกี่ยวกับสิ่งที่จะเข้าสู่การสร้างแอปพลิเคชัน</p>
+  <p>&rarr;&nbsp;โดยรวม Blockly เป็น editor ที่ง่ายที่สุดประกอบด้วยกล่องเครื่องมือเพื่อจัดเก็บประเภทของบล็อกและพื้นที่ทำงานสำหรับการจัดบล็อก</p>
+  <p>เรียนรู้เพิ่มเติมเกี่ยวกับการรวม Blockly ในเอกสารเริ่มต้นใช้งานสำหรับเว็บหรือ Android</p>
+  <p>&rarr;&nbsp;สร้างบล็อกของแอพ เมื่อคุณมีแอ็พพลิเคชัน Blockly แล้วคุณจะต้องสร้างบล็อคเพื่อให้ผู้ใช้สามารถเขียนโค้ดด้วยแล้วเพิ่มลงในกล่องเครื่องมือที่ถูกบล็อกของคุณ</p>
+  <p>เรียนรู้วิธีการสร้างภาพรวม Blocks Custom</p>
+  <p>&rarr;&nbsp;สร้างส่วนที่เหลือของแอปพลิเคชัน ด้วยตัวเอง Blockly เป็นเพียงวิธีในการสร้างโค้ด</p>
+  <p>หัวใจของแอพของคุณคือการตัดสินใจว่าจะทำอย่างไรกับโค้ดนั้น</p>
+  <br>
+  <p>จุดแข็งของ Blockly และตัวเลือกอื่น ๆ</p>
+  <p>&rarr;&nbsp;สามารถแยกโค้ดออกได้ ผู้ใช้สามารถแยกโปรแกรมที่ใช้บล็อกเป็นภาษาโปรแกรมทั่วไปและเปลี่ยนไปใช้การเขียนโปรแกรมแบบข้อความได้อย่างราบรื่น</p>
+  <p>&rarr;&nbsp;ซอฟแวร์รหัสเปิด ทุกอย่างเกี่ยวกับ Blockly คุณสามารถปรับปรุงแก้ไขและใช้ในเว็บไซต์ของคุณเองและแอพ Android ได้</p>
+  <p>&rarr;&nbsp;สามารถปรับแต่งให้เหมาะกับความต้องการของคุณโดยการเพิ่มบล็อคที่กำหนดเองสำหรับ API ของคุณหรือลบบล็อกและฟังก์ชันที่ไม่จำเป็นออกไปได้</p>
+  <p>&rarr;&nbsp;มีความสามารถสูง ไม่ได้เป็นของเล่น คุณสามารถใช้งานการเขียนโปรแกรมที่ซับซ้อนเช่นการคำนวณค่ามาตรฐานในบล็อกเดียวได้</p>
+  <p>&rarr;&nbsp;Blockly ได้รับการแปลเป็นภาษาต่างๆกว่า 40 ภาษารวมทั้งเวอร์ชันขวาไปซ้ายสำหรับภาษาอาหรับ และ Hebrew (อิสราเอล)</p>
+  <br>
+  <img src="img/BlocklyDemoImage.png" width="700" height="400">
+  <p>Blockly สามารถประกอบเป็นโปรเจคที่เป็นประโยชน์ได้หลากหลายแนวทาง รวมไปถึงเครื่องมือที่ช่วยด้านการศึกษา</p>
+  <p>โค้ดทุกส่วนสามารถนำไปใช้งานหรือพัฒนาต่อได้ฟรี เว็บไซต์ของ Blockly : <a href="https://developers.google.com/blockly/" target="_Blank">Get Started Blockly</a></p>
+  <p>ซึ่งเราพัฒนาต่อจาก BlocklyDuino : <a href="https://github.com/BlocklyDuino/BlocklyDuino" target="_Blank">GitHub BlocklyDuino</a>
+    <a href="http://blocklyduino.github.io/BlocklyDuino/blockly/apps/blocklyduino/" target="_Blank">Webpage</a>
+  </p>
+  
+  <br><br><br>
+  
+  <div id="How to use Blockly GUI"><h3>How to use Blockly GUI</h3></div>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; สำหรับวิธีการใช้ Blockly นั้นเพียงเลือกแถบเมนูด้านซ้ายมือและ "คลิกซ้าย" ลากวางลงบนจอ จากนั้นจะปรากฏ โค้ดสำหรับนำไปใช้งานบน Arduino IDE</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; <img src="img/Guide-How-to-use-Blockly-GUI1.png" width="700" height="400"></p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; การต่อกันของ Blockly จะต่อกันจากบนลงล่าง โค้ดจะเรียงจากบนลงล่างเช่นกัน</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; <img src="img/Guide-How-to-use-Blockly-GUI2.png" width="700" height="400"></p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; การใส่อินพุตของ Blockly </p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; <img src="img/Guide-How-to-use-Blockly-GUI3.png" width="700" height="400"></p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; <img src="img/Guide-How-to-use-Blockly-GUI4.png" width="700" height="400"></p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; การสร้างตัวแปรจำนวณเต็มของ Blockly เราจะได้ตัวแปรที่ชื่อ item และสามารถนำอินพุต item ด้านล่าง set item ไปใช้งานได้</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; <img src="img/Guide-How-to-use-Blockly-GUI5.png" width="700" height="400"></p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; <img src="img/Guide-How-to-use-Blockly-GUI6.png" width="700" height="400"></p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; การลบ Blockly ออกง่ายมากๆเพียงแค่ลาก Block ไปวางที่ ถังขยะ</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; <img src="img/Guide-How-to-use-Blockly-GUI7.png" width="700" height="400"></p>
+
+  <br>
+
+  <div id="How to Copy code to clipboard"><h3>How to Copy code to clipboard</h3></div>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; สำหรับวิธีการคัดลอกโค้ดไปยัง clipboard เป็นการ คัดลอกโค้ดที่ปรากฏอยู่ในหน้าต่าง Your Code# ไปใช้งานหรือเก็บไว้ตามต้องการ</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; <img src="img/Guide-How-to-Copy-code-to-clipboard1.png" width="700" height="400"></p>
+
+  <br>
+
+  <div id="How to Discard"><h3>How to Discard</h3></div>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; สำหรับวิธีการละทิ้งโปรเจคที่เราสร้างจาก Blockly เป็นการเริ่มทำโปรเจคใหม่นั้นเอง</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; <img src="img/Guide-How-to-Discard1.png" width="700" height="400"></p>
+
+  <br>
+
+  <div id="How to save project arduino file ino"><h3>How to save project arduino file ino</h3></div>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; สำหรับวิธีการบันทึกไฟล์ Arduino โปรเจคที่เราสร้างจาก Blockly ให้คลิกที่ปุ่ม "Save code project.ino" และตั้งชื่อ smartAgri จากนั้นกด "ตกลง" เราจะได้ไฟล์ smartAgri.ino ที่โฟลเดอร์ Download</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; <img src="img/Guide-How-to-save-project-arduino-file-ino1.png" width="700" height="400"></p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; <img src="img/Guide-How-to-save-project-arduino-file-ino2.png" width="700" height="400"></p>
+
+  <br>
+
+  <div id="How to save projectXml"><h3>How to save projectXml</h3></div>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; สำหรับวิธีการบันทึกไฟล์โปรเจคที่เราสร้างจาก Blockly เป็นไฟล์โปรเจครูปแบบของ Xml เราสามารถเก็บโปรเจคขึ้นมาปรัปปรุงแก้ไขใหม่ได้ ให้คลิกที่ปุ่ม "Save project xml" และตั้งชื่อเป็น "smartAgriXml" จากนั้นกดตกลง เราจะได้ไฟล์ smartAgriXml.xml ที่โฟลเดอร์ Download</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; <img src="img/Guide-How-to-save-projectXml1.png" width="700" height="400"></p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; <img src="img/Guide-How-to-save-projectXml2.png" width="700" height="400"></p>
+
+  <br>
+
+  <div id="How to load projectXml"><h3>How to load projectXml</h3></div>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; สำหรับวิธีการโหลดไฟล์โปรเจคที่เราสร้างจาก Blockly เป็นไฟล์โปรเจครูปแบบของ Xml เราสามารถโหลดโปรเจคขึ้นมาปรัปปรุงแก้ไขใหม่ได้ ให้คลิกที่ปุ่ม "Load project xml" ที่ชื่อว่า "smartAgriXml" จากนั้นกด "Open" เราจะได้โปรเจคที่เราสร้างไว้กลับมา</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; <img src="img/Guide-How-to-load-projectXml1.png" width="700" height="400"></p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; <img src="img/Guide-How-to-load-projectXml2.png" width="700" height="400"></p>
+
+  <br>
+
+  <div id="Example Serial Monitor Display"><h3>Example Serial Monitor Display</h3></div>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; ตัวอย่างการทดสอบแสดงข้อความบน Serial Monitor ที่อยู่บนโปรแกรม Arduino IDE : <a href="https://drive.google.com/drive/folders/1z8MblcDiPHVrQKE7q_JnCW4WmP88d0-a?usp=sharing" target="_Blank">Download Example</a></p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; <img src="img/Guide-Example-Serial-Monitor-Display.png" width="700" height="400"></p>
+  <br>
+  
+  <br>
+
+  <div id="Example LCD Show RealTime Display"><h3>Example LCD Show RealTime Display</h3></div>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; ก่อนที่เราจะใช้ LCD เราต้องโหลด LCD Display 16x2+I2C Library ก่อนถึงจะใช้งานได้ ขั้นตอนการดาวน์โหลดคลิก : <a href="http://smart-farm.org/install.html" target="_Blank">How to Install</a> และสามารถดาวน์โหลด Library ได้คลิก <a href="http://smart-farm.org/download.html" target="_Blank">Download Library</a>  โหลดตัวอย่างโปรเจค : <a href="https://drive.google.com/drive/folders/18ek8VVuWHhI9h9ztFh8fvvLkBnr16IF7?usp=sharing" target="_Blank">Download Example</a></p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; <img src="img/Guide-Example-LCD-Show-RealTime-Display.png" width="700" height="400"></p>
+  <br>
+
+  <div id="Example Max7219 Show RealTime Display"><h3>Example Max7219 Show RealTime Display</h3></div>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; ก่อนที่เราจะใช้ Max7219 เราต้องโหลด Max7219 Display Max7219 Library ก่อนถึงจะใช้งานได้ ขั้นตอนการดาวน์โหลดคลิก : <a href="http://smart-farm.org/install.html" target="_Blank">How to Install</a> และสามารถดาวน์โหลด Library ได้คลิก <a href="http://smart-farm.org/download.html" target="_Blank">Download Library</a>  โหลดตัวอย่างโปรเจค : <a href="https://drive.google.com/drive/folders/10NPok6In_isXIXPXaL8g9LtJtMVUWiG9?usp=sharing" target="_Blank">Download Example</a></p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; <img src="img/Guide-Example-Max7219-Show-RealTime-Display.png" width="800" height="400"></p>
+  <br>
+
+  <div id="Example Arduino Nano Buildin LED"><h3>Example Arduino Nano Buildin LED</h3></div>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; ตัวอย่างการทดสอบไฟกระพริบ LED ที่อยู่ภายในบอร์ด Arduino Nano : <a href="https://drive.google.com/drive/folders/1t_xmRUFki1p2IHx34n8Q6a3eti_xYMbO?usp=sharing" target="_Blank">Download Example</a></p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; <img src="img/Guide-Example-Arduino-Nano-Buildin-LED.png" width="700" height="400"></p>
+  <br>
+
+  <div id="Example NodeMCU/ESP8266 SendAPI to ThinkSpeak"><h3>Example NodeMCU/ESP8266 SendAPI to ThinkSpeak</h3></div>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; ตัวอย่างการทดสอบรับข้อมูลจาก UART เพื่อส่งข้อมูลไปยัง ThingSpeak : <a href="https://drive.google.com/drive/folders/1jrcRmKUTq40ZSObUE4zHG49kG3hVSsMt?usp=sharing" target="_Blank">Download Example</a></p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; <img src="img/Guide-How-to-upload-data-to-ThingSpeak.png" width="700" height="400"></p>
+  <br>
+
+  <br><br><br>
+
+</div>
+
+</body>
+</html>

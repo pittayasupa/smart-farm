@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" type="bmg/png/icon" href="icon/smart-farm-logo.png" />
+  <meta charset="utf-8">
+  <title>How to install</title>
+<style>
+
+  body {
+      margin: 0;
+  }
+  ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      width: 15%;
+      background-color: #333;
+      position: fixed;
+      height: 100%;
+      overflow: auto;
+  }
+
+  li a {
+      display: block;
+      color: white;
+      padding: 8px 16px;
+      text-decoration: none;
+  }
+
+  li a.active {
+      background-color: #555;
+      color: white;
+  }
+
+  li a:hover:not(.active) {
+      background-color: #555;
+      color: white;
+  }
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a class="active" href="/">Home</a></li>
+  <li><a href="#Install Arduino IDE">Install Arduino IDE</a></li>
+  <li><a href="#Download Library">Download Library</a></li>
+  <li><a href="#Install Library to Arduino IDE">Install Library to Arduino IDE</a></li>
+
+</ul>
+
+<div style="margin-left:15%;padding:1px 16px;height:1000px;">
+  <h2>How to install วิธีการติดตั้งเครื่องมือสำหรับโปรแกรมใช้งานชุดสร้างระบบควบคุมฟาร์มฉลาด</h2>
+  <div id="Install Arduino IDE"><h3>Install Arduino IDE</h3></div>
+  <img src="img/Install-Logo-Arduino.png" width="600" height="300">
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; Arduino IDE ย่อมาจาก Arduino integrated development environment คือ เครื่องมือสำหรับการเขียนโปรแกรมที่มีใช้งานได้กับอาดุยอิโน่ได้ทุกรุ่น</p>
+  <p>โดยภายในจะมีเครื่องมือที่จะใช้สำหรับติดต่ออาดุยอิโน่ เช่น การค้นหาอาดุยอิโน่ ที่ติดต่อกับเครื่องคอมพิวเตอร์</p>
+  <p>การเลือกรุ่นอาดุยอิโน่ที่ต่ออยู่เพื่อตรวจสอบว่าขนาดของโปรแกรมที่เขียน หรือไลบรารี่ต่างๆซับพอร์ตกับอาดุยอิโน่รุ่นนั้นๆหรือไม่</p>
+  <p>อีกทั้งยังมีโปรแกรมติดต่อผ่านซีเรียลโดยตรงสำหรับคอมพิวเตอร์ โปรแกรมอาดุยอิโน่ไอดีอี เป็นโปรแกรมโอเพ่นซอสสามารถนำไปใช้งานได้ฟรีๆ </p>
+  <p>อีกทั้งมีซอสโค้ดตัวอย่างให้ทดสอบกับเซ็นเซอร์ต่างๆ เช่น โปรแกรมไฟกระพริบ โปรแกรมวัดอุณภูมิ</p>
+  <br>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; ขั้นตอนการติดตั้ง Arduuino IDE</p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; สามารถดาวน์โหลดได้ที่ : <a href="https://www.arduino.cc/en/Main/Software" target="_Blank">Download</a></p>
+  <p><img src="img/Install-Download-the-Arduino-IDE.png" width="600" height="300"></p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; 1.ให้คลิกที่ Windows Installer, for Windows XP and up เพื่อโหลด ไฟล์ installer มาติดตั้งในระบบปฏิบัติการ windows</p>
+  <p><img src="img/Install-JUST-DOWNLOAD.png" width="600" height="300"></p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; 2.คลิกที่ JUST DOWNLOAD</p>
+  <p><img src="img/Install-Save-File-Install.png" ></p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; 3.บันทึกไฟล์ติดตั้งและดับเบิ้ลคลิกเพื่อติดตั้งไฟล์</p>
+  <p><img src="img/Install-Arduino-Setup1.png">
+    <img src="img/Install-Arduino-Setup2.png"></p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; 4.ให้คลิก I Agree เพื่อยอมรับ และ คลิก Next เพื่อเลือก สร้าง shoctcut ไปยังหน้า Desktop ของเรา</p>
+  <p><img src="img/Install-Arduino-Setup3.png">
+    <img src="img/Install-Arduino-Setup4.png"></p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; 5.เลือกพื้นที่สำหรับติดตั้งโปรแกรม Arduino IDE เริ่มต้นเราคลิก Install เลย</p>
+  <p><img src="img/Install-Arduino-Setup5.png"></p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; 6.เมื่อเสร็จแล้วให้กด Close เสร็จสิ้นการติดตั้งโปรแกรม Arduino IDE</p>
+  <p><img src="img/Install-Arduino-Show-Desktop.png" ></p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; 7.เราจะเห็น Arduino อยู่บน Desktop ของเราให้ดับเบิ้ลคลิกเพื่อเปิดโปรแกรมใช้งาน</p>
+  <p><img src="img/Install-Arduino-Initial-Open.png"><img src="img/Install-Arduino-Sketch.png"></p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp; 8.เราปรากฏเป็นหน้าต่างเปล่า ที่มีฟังก์ชั่น setup และ loop</p>
+
+  <br><br>
+
+  <div id="Download Library"><h3>Download Library</h3></div>
+
+  <p>1.ให้ไปที่ Download Library&nbsp;</p>
+  <p>&nbsp; &nbsp;จะเป็นเพจสำหรับดาวน์โหลดไลบรารี่ เพื่อไปใช้กับ พอร์ต I/O กับเซ็นเซอร์ และจอแสดงผล</p>
+  <p><img src="img/Page-Download-Library.png"  width="600" height="400">
+  <p>&nbsp; &nbsp;วิธีการดาวน์โหลดเพียงคลิกลิงค์</p>
+  <p><img src="img/Page-Download-Library-Click.png"  width="600" height="400">
+  <p>&nbsp; &nbsp;แล้วเลือกดาวน์โหลดทั้งหมด จากนี้นให้รอบีบอัดไฟล์เป็น Output ไฟล์ให้</p>
+  <p><img src="img/Page-Download-Library-Click-Download.png"  width="800" height="400">
+  <br>
+
+  <div id="Install Library to Arduino IDE"><h3>Install Library to Arduino IDE</h3></div>
+  <p>&nbsp; &nbsp;เมื่อเราได้ทำการดาวน์โหลดไฟล์เสร็จแล้ว ให้ดับเบิ้ลคลิกที่ไฟล์</p>
+  <p><img src="img/Install-Library-Arduino-IDE1.png"  width="1000" height="600">
+  <p>&nbsp; &nbsp; </p>
+  <p><img src="img/Install-Library-Arduino-IDE2.png"  width="1000" height="600">
+
+  
+
+  <br><br><br><br><br>
+
+</div>
+
+</body>
+</html>

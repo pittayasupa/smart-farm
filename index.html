@@ -1,0 +1,847 @@
+
+<html>
+<head>
+<link rel="icon" type="bmg/png/icon" href="icon/smart-farm-logo.png" />
+<meta charset="utf-8">
+
+<title>RMUTI-Smart-IoT for Agriculture Control under Thailand 4.0 new</title>
+
+<script type="text/javascript" src="blockly_compressed.js"></script>
+<script type="text/javascript" src="blocks_compressed.js"></script>
+<script type="text/javascript" src="smartAgri_compressed.js"></script>
+<script type="text/javascript" src="msg/js/en.js"></script>
+<script type="text/javascript" src="FileSaver.min.js"></script>
+<script type="text/javascript" src="blockly_helper.js"></script>
+
+<script>
+
+//Don't Right click
+//document.addEventListener("contextmenu", function(e){ e.preventDefault(); }, false);
+
+/**
+ * List of tab names.
+ * @private
+ */
+//var TABS_ = ['blocks', 'smartAgri', 'xml'];
+var TABS_ = ['blocks', 'xml'];
+var selected = 'blocks';
+/*
+ * Switch the visible pane when a tab is clicked.
+ * @param {string} clickedName Name of tab clicked.
+ */
+function tabClick(clickedName) {
+  // If the XML tab was open, save and render the content.
+  if (document.getElementById('tab_xml').className == 'tabon') {
+    var xmlTextarea = document.getElementById('content_xml');
+    var xmlText = xmlTextarea.value;
+    var xmlDom = null;
+    try {
+      xmlDom = Blockly.Xml.textToDom(xmlText);
+    } catch (e) {
+      var q =
+          window.confirm('Error parsing XML:\n' + e + '\n\nAbandon changes?');
+      if (!q) {
+        // Leave the user on the XML tab.
+        return;
+      }
+    }
+    if (xmlDom) {
+      Blockly.mainWorkspace.clear();
+      Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xmlDom);
+    }
+  }
+  if (document.getElementById('tab_blocks').className == 'tabon') {
+    Blockly.mainWorkspace.setVisible(false);
+  }
+  // Deselect all tabs and hide all panes.
+  for (var i = 0; i < TABS_.length; i++) {
+    var name = TABS_[i];
+    document.getElementById('tab_' + name).className = 'taboff';
+    document.getElementById('content_' + name).style.visibility = 'hidden';
+  }
+  // Select the active tab.
+  selected = clickedName;
+  document.getElementById('tab_' + clickedName).className = 'tabon';
+  // Show the selected pane.
+  document.getElementById('content_' + clickedName).style.visibility =
+      'visible';
+  renderContent();
+  if (clickedName == 'blocks') {
+    Blockly.mainWorkspace.setVisible(true);
+  }
+  Blockly.fireUiEvent(window, 'resize');
+}
+/**
+ * Populate the currently selected pane with content generated from the blocks.
+ */
+function renderContent() {
+  var content = document.getElementById('content_' + selected);
+  // Initialize the pane.
+  if (content.id == 'content_blocks') {
+    // If the workspace was changed by the XML tab, Firefox will have performed
+    // an incomplete rendering due to Blockly being invisible.  Rerender.
+    Blockly.mainWorkspace.render();
+  } else if (content.id == 'content_xml') {
+    var xmlTextarea = document.getElementById('content_xml');
+    var xmlDom = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
+    var xmlText = Blockly.Xml.domToPrettyText(xmlDom);
+    xmlTextarea.value = xmlText;
+    xmlTextarea.focus();
+  } else if (content.id == 'content_smartAgri') {
+    //content.innerHTML = Blockly.smartAgri.workspaceToCode();
+    var smartAgriTextarea = document.getElementById('content_smartAgri');
+    smartAgriTextarea.value = Blockly.smartAgri.workspaceToCode();
+    smartAgriTextarea.focus();
+  }
+}
+/**
+ * Compute the absolute coordinates and dimensions of an HTML element.
+ * @param {!Element} element Element to match.
+ * @return {!Object} Contains height, width, x, and y properties.
+ * @private
+ */
+function getBBox_(element) {
+  var height = element.offsetHeight;
+  var width = element.offsetWidth;
+  var x = 0;
+  var y = 0;
+  do {
+    x += element.offsetLeft;
+    y += element.offsetTop;
+    element = element.offsetParent;
+  } while (element);
+  return {
+    height: height,
+    width: width,
+    x: x,
+    y: y
+  };
+}
+/**
+ * Initialize Blockly.  Called on page load.
+ */
+function init() {
+  //window.onbeforeunload = function() {
+  //  return 'Leaving this page will result in the loss of your work.';
+  //};
+  var container = document.getElementById('content_area');
+  var onresize = function(e) {
+    var bBox = getBBox_(container);
+    for (var i = 0; i < TABS_.length; i++) {
+      var el = document.getElementById('content_' + TABS_[i]);
+      el.style.top = bBox.y + 'px';
+      el.style.left = bBox.x + 'px';
+      // Height and width need to be set, read back, then set again to
+      // compensate for scrollbars.
+      el.style.height = bBox.height + 'px';
+      el.style.height = (2 * bBox.height - el.offsetHeight) + 'px';
+      el.style.width = bBox.width + 'px';
+      el.style.width = (2 * bBox.width - el.offsetWidth) + 'px';
+    }
+    // Make the 'Blocks' tab line up with the toolbox.
+    if (Blockly.mainWorkspace.toolbox_.width) {
+      document.getElementById('tab_blocks').style.minWidth =
+          (Blockly.mainWorkspace.toolbox_.width - 38) + 'px';
+          // Account for the 19 pixel margin and on each side.
+    }
+  };
+
+  
+  window.addEventListener('resize', onresize, false);
+  var toolbox = document.getElementById('toolbox');
+
+  Blockly.inject(
+    document.getElementById('content_blocks'),
+      {
+        
+        toolbox: toolbox,
+        collapse : true, 
+        comments : true, 
+        disable : true, 
+        maxBlocks : Infinity, 
+        zoom:
+         {controls: true,
+          wheel: true},
+        trashcan : true, 
+        horizontalLayout : false, 
+        toolboxPosition : 'start', 
+        css : true,   
+        grid:
+            {
+            spacing: 20,
+            length: 2,
+            colour: '#ccc',
+            snap: true
+          },
+        media: 'media/',
+        rtl : false, 
+        scrollbars : true, 
+        sounds : true, 
+        oneBasedIndex : true, 
+        
+     }
+  );
+  auto_save_and_restore_blocks();
+  //load from url parameter (single param)
+  //http://stackoverflow.com/questions/2090551/parse-query-string-in-javascript
+  var dest = unescape(location.search.replace(/^.*\=/, '')).replace(/\+/g, " ");
+  if(dest){
+    load_by_url(dest);
+  }
+}
+</script>
+<style>
+    body {
+        height: 100%;
+    }
+    h1 {
+      font-weight: normal;
+      font-size: 100%;
+    }
+    #tabRow>td {
+      border: 1px solid #ccc;
+    }
+    td.tabon {
+      border-bottom-color: #ddd !important;
+      background-color: #ddd;
+      padding: 5px 19px;
+    }
+    td.taboff {
+      cursor: pointer;
+      padding: 5px 19px;
+    }
+    td.taboff:hover {
+      background-color: #eee;
+    }
+    td.tabmin {
+      border-top-style: none !important;
+      border-left-style: none !important;
+      border-right-style: none !important;
+    }
+    td.tabmax {
+      border-top-style: none !important;
+      border-left-style: none !important;
+      border-right-style: none !important;
+      width: 99%;
+      text-align: right;
+    }
+    table {
+      border-collapse: collapse;
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+    td {
+      padding: 0;
+      vertical-align: top;
+    }
+    .content {
+      visibility: hidden;
+      margin: 0;
+      padding: 1ex;
+      position: absolute;
+      direction: ltr;
+    }
+    pre.content {
+      overflow: scroll;
+    }
+    #content_blocks {
+      padding: 0;
+    }
+    .blocklySvg {
+      border-top: none !important;
+    }
+    #content_xml {
+      resize: none;
+      outline: none;
+      border: none;
+      font-family: monospace;
+      overflow: scroll;
+    }
+    button {
+      padding: 1px 1em;
+      font-size: 90%;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      background-color: #eee;
+      color: black;
+    }
+    button.launch {
+      border: 1px solid #d43;
+      background-color: #d43;
+      color: white;
+    }
+    button:active {
+      border: 1px solid blue !important;
+    }
+    button:hover {
+      	box-shadow: 2px 2px 5px #888;
+     	background-color: #4CAF50; /* Green */
+	    border: none;
+	    color: white;
+	    /*padding: 2px 2px;*/
+	    text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+	    /*font-size: 10px;*/
+    }
+    textarea
+	{
+  		border:0px solid #999999;
+  		width:100%;
+  		margin:5px 0;
+  		padding:3px;
+	}
+  #code_area
+  {
+
+    background-color: white;
+    color: black;
+    font-size: 14px;
+  }
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #333;
+    /*position: fixed;*/
+    overflow: auto;
+  }
+  li {
+      float: left;
+  }
+  li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+  }
+  li a.active {
+    background-color: #555;
+    color: white;
+  }
+  li a:hover {
+      background-color: #111;
+  }
+</style>
+</head>
+<body onLoad="init()" >
+<ul>
+  <li><a class="active" href="/">Home</a></li>
+  <li><a href="/guide.html">Guide</a></li>
+  <li><a href="/install.html">How to Install</a></li>
+  <li><a href="/download.html">Download Library</a></li>
+  <li><a href="/developer.html">Developer</a></li>
+  <li><a href="/sensors.html">Sensors</a></li>
+  <li><a href="/myalbum.html">Album</a></li>
+  <li><a href="/about.html">About</a></li>
+</ul>
+
+<h2>RMUTI IoT-Smart for Agriculture Control under Thailand 4.0</h1>
+<h1>ชุดสร้างระบบควบคุมฟาร์มฉลาดด้วยตนเอง โดยไม่ต้องเขียนโปรแกรมแม้แต่บรรทัดเดียว เพื่อสมาร์ทฟาร์มเมอร์ คนยุคใหม่ไทยแลนด์ 4.0 </h1>
+
+<br>
+<table width="100%" height="100%" border="1" align="center">
+	<table width="100%" border="0" >
+		<td width="70%">
+      <table width="100%" >
+				<tr id="tabRow" height="1em">
+			    	<td class="tabon" id="tab_blocks"  onClick="tabClick('blocks')">Blocks</td>
+			   		<td class="tabmin">&nbsp;</td>
+				    <td class="taboff" id="tab_xml"  onClick="tabClick('xml')">XML</td>
+			     	<td class="tabmax">
+              <button type="button" onclick="copyFunction()">Copy code to clipboard</button>
+              <button onClick="discard()">Discard</button>
+              <button onClick="saveCode()">Save code project.ino</button>
+              <button onClick="save()">Save project xml</button>
+              <button id="fakeload">Load project xml</button>
+              <input type="file" id="load" style="display: none;"/>
+			    	</td>
+				</tr>
+      </table>
+    </td>
+</table>
+<table width="100%" border="1">
+  <tr>
+      <td width="60%"  id="content_area" ></td>
+      <td width="40%" >
+      			Your code# <br>
+       			<textarea readonly name="code_area" rows="30" cols="70" id="code_area"> </textarea>
+			</td>
+  </tr>
+</table>
+</table>
+<br>
+<br>
+<br>
+<br>
+
+<script>
+
+function myFunction() {
+    document.getElementById("code_area").innerHTML = "";
+    var code = Blockly.smartAgri.workspaceToCode();
+    document.getElementById("code_area").innerHTML = code;
+}
+
+function copyFunction() {
+    var copyText = document.getElementById("code_area");
+  	copyText.select();
+  	document.execCommand("Copy");
+}
+
+</script>
+  <div id="content_blocks" class="content" onMouseMove="myFunction()"></div>
+  <textarea id="content_smartAgri" class="content" readonly wrap="off"></textarea>
+  <textarea id="content_xml" class="content" wrap="off"></textarea>
+  
+<xml xmlns="http://www.w3.org/1999/xhtml" id="toolbox" style="display: none">
+
+	<category name="Port I/O" >
+    <block type="outputY_write"></block>
+    <block type="outputY_write_2">
+    	<value name="PIN">
+	        <block type="math_number">
+	          <field name="NUM">0</field>
+	        </block>
+      	</value>
+      	<value name="STAT">
+	    	<block type="inout_highlow">
+	        	<field name="BOOL">1</field>
+	      	</block>
+	    </value>
+    </block>
+    <block type="inputX_read"></block>
+    <block type="inputX_read_2">
+    	<value name="PIN">
+	        <block type="math_number">
+	          <field name="NUM">0</field>
+	        </block>
+      	</value>
+    </block>
+    <block type="adc_read"></block>
+    <block type="inout_digital_write"></block>
+    <block type="inout_digital_read"></block>
+    <block type="inout_buildin_led"></block>
+    <block type="inout_highlow"></block>
+  </category>   
+
+  <category name="PWM Out" >
+  	<block type="pwm_out">
+    <field name="PIN">4</field>
+	    <value name="VAL_PWM">
+	      <block type="math_number" >
+	        <field name="NUM">128</field>
+	      </block>
+	    </value>
+  	</block>
+  	<block type="pwm_out_percent"></block>
+  </category>
+  
+  <category name="Sensors" >
+    <block type="sensor_water_flow_read"></block>
+    <block type="sensor_pH_read"></block>
+    <block type="sensor_temp_read"></block>
+    <block type="sensor_humid_read"></block>
+    <block type="sensor_ldr_read"></block>
+    <block type="sensor_ambient_light_read"></block>
+    <block type="sensor_soil_moisture_read"></block>
+    <block type="sensor_co2_read"></block>
+    <block type="sensor_co2_mg811_read"></block>
+    <block type="sensor_windspeed_read"></block>
+    <block type="sensor_raingauge_read"></block>
+    <block type="sensor_windvane_read"></block>
+    <!-- <block type="sensor_tds_read"></block> -->
+    <block type="sensor_ds18b20_read"></block>
+    <block type="sensor_water_level_liquid"></block>
+    
+  </category>
+
+  <category name="Servo" >
+    <block type="servo_move">
+       <value name="DEGREE">
+        <block type="math_number">
+          <field name="NUM">0</field>
+        </block>
+      </value>
+    </block>
+    <block type="servo_read_degrees"></block>
+  </category>
+
+  <category name="Timer">
+  	
+
+  	<block type="Set_Timer">
+      	<value name="Time_End">
+	        <block type="math_number">
+	          <field name="NUM">3600</field>
+	        </block>
+      	</value>
+  	</block>
+  	<block type="Set_Function_Timer"></block>
+  	<block type="Timer_Reset"></block>
+  	<block type="Timer_Start"></block>
+  	<block type="Timer_Stop"></block>
+  	<block type="Timer_Val"></block>
+
+    <block type="time_rtc_years_read"></block>
+    <block type="time_rtc_months_read"></block>
+    <block type="time_rtc_days_read"></block>
+    <block type="time_rtc_hours_read"></block>
+    <block type="time_rtc_mins_read"></block>
+    <block type="time_rtc_seconds_read"></block>
+    <block type="time_rtc_seconds_delay">
+      <value name="Time_RTC_Seconds_Delay">
+        <block type="math_number">
+          <field name="NUM">3000</field>
+        </block>
+      </value>
+    </block>
+    <block type="base_delay">
+      <value name="DELAY_TIME">
+        <block type="math_number">
+          <field name="NUM">200</field>
+        </block>
+      </value>
+    </block>
+  </category>
+
+  <category name="Counter">
+  	<block type="Set_Counter">
+      	<value name="Counter_End">
+	        <block type="math_number">
+	          <field name="NUM">99999</field>
+	        </block>
+      	</value>
+  	</block>
+  	<block type="Counter_Reset"></block>
+  	<block type="Counter_UP"></block>
+  	<block type="Counter_Down"></block>
+  	<block type="Counter_Val"></block>
+  </category>
+
+ 	<category name="IoT-Smart">
+
+    <block type="build_nrf24l01">
+      <value name="CH">
+        <block type="math_number">
+          <field name="NUM">90</field>
+        </block>
+      </value>
+      <value name="RXADDRESS">
+        <block type="text">
+          <field name="TEXT">SMFARM</field>
+        </block>
+      </value>
+      <value name="TXADDRESS">
+        <block type="text">
+          <field name="TEXT">SMFARM</field>
+        </block>
+      </value>
+    </block>
+    <block type="nrf24l01_read"></block>
+    <block type="nrf24l01_send">
+      <value name="SEND_RF">
+        <block type="text">
+          <field name="TEXT"></field>
+        </block>
+      </value>
+    </block>
+    <block type="build_nodemcu_module_wifi">
+      <value name="SSID">
+        <block type="text">
+          <field name="TEXT">SSID Name</field>
+        </block>
+      </value>
+      <value name="Password">
+        <block type="text">
+          <field name="TEXT">Password</field>
+        </block>
+      </value>
+    </block>  
+
+    <block type="nodemcu_get_https">
+      <value name="URL">
+        <block type="text">
+          <field name="TEXT">URL API</field>
+        </block>
+      </value>
+    </block>
+
+    <block type="nodemcu_get_lastfield_thingspeak">
+      <value name="CHANNEL">
+        <block type="text">
+          <field name="TEXT">Channel ThingSpeak</field>
+        </block>
+      </value>
+      <value name="ATFIELD">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+    </block>
+    '
+
+
+    <block type="nodemcu_up_thingspeak">
+      <value name="API_KEY">
+        <block type="text">
+          <field name="TEXT">API_KEY</field>
+        </block>
+      </value>
+      <value name="SET_FIELD">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+      <value name="DATA_FIELD">
+        <block type="math_number">
+          <field name="NUM">10</field>
+        </block>
+      </value>
+    </block>
+
+    <block type="nodemcu_up_thingspeak2">
+      <value name="API_KEY">
+        <block type="text">
+          <field name="TEXT">API_KEY</field>
+        </block>
+      </value>
+      <value name="DATA_FIELD1">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+      <value name="DATA_FIELD2">
+        <block type="math_number">
+          <field name="NUM">2</field>
+        </block>
+      </value>
+    </block>
+    
+    <block type="nodemcu_up_thingspeak4">
+      <value name="API_KEY">
+        <block type="text">
+          <field name="TEXT">API_KEY</field>
+        </block>
+      </value>
+      <value name="DATA_FIELD1">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+      <value name="DATA_FIELD2">
+        <block type="math_number">
+          <field name="NUM">2</field>
+        </block>
+      </value>
+      <value name="DATA_FIELD3">
+        <block type="math_number">
+          <field name="NUM">3</field>
+        </block>
+      </value>
+      <value name="DATA_FIELD4">
+        <block type="math_number">
+          <field name="NUM">4</field>
+        </block>
+      </value>
+    </block>
+
+  </category>
+
+
+  <category name="Initial">
+  	<block type="setup_initial"></block>
+  </category>
+
+
+
+  <category name="Serial Port">
+    
+    <block type="set_serial_port"></block>
+    <block type="read_uart"></block>
+    <block type="send_uart">
+      <value name="SEND_UART">
+        <block type="text">
+          <field name="TEXT">Hello world</field>
+        </block>
+      </value>
+    </block>
+    <block type="send_uart_newline">
+      <value name="SEND_UART_NEWLINE">
+        <block type="text">
+          <field name="TEXT">Hello world</field>
+        </block>
+      </value>
+    </block>
+		<block type="serial_print">
+      <value name="CONTENT">
+        <block type="text">
+          <field name="TEXT">in line</field>
+        </block>
+      </value>
+    </block>
+    <block type="serial_print_type">
+      <value name="CONTENT">
+        <block type="text">
+          <field name="TEXT">in line</field>
+        </block>
+      </value>
+    </block>
+    <block type="serial_println">
+      <value name="CONTENT">
+        <block type="text">
+          <field name="TEXT">new line</field>
+        </block>
+      </value>
+    </block>
+    <block type="serial_println_type">
+      <value name="CONTENT">
+        <block type="text">
+          <field name="TEXT">new line</field>
+        </block>
+      </value>
+    </block>
+	</category>
+
+  <category name="Display" >
+    
+    <block type="display_lcd_setaddress"> </block>
+
+    <block type="display_lcd">
+      <value name="CONTENT">
+        <block type="text">
+          <field name="TEXT">Smart-Farm.org</field>
+        </block>
+      </value>
+    </block>
+    <block type="sevenseg_max7219_setpin">
+      <field name="DIN">4</field>
+      <field name="LOAD">5</field>
+      <field name="CLK">6</field>
+    </block>
+    <block type="sevenseg_max7219">
+      <field name="DIGIT">0</field>
+      <value name="MAX7219_NUM">
+        <block type="math_number">
+          <field name="NUM">0</field>
+        </block>
+      </value>
+    </block>
+    <block type="sevenseg_max7219_float">
+      <field name="DIGIT">0</field>
+      <value name="MAX7219_NUM">
+        <block type="math_number">
+          <field name="NUM">0</field>
+        </block>
+      </value>
+    </block>
+
+
+  </category>
+  <sep></sep>
+
+  <category name="Loop" >
+		<block type="controls_for">
+      <value name="FROM">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+      <value name="TO">
+        <block type="math_number">
+          <field name="NUM">10</field>
+        </block>
+      </value>
+    </block>
+    <block type="controls_whileUntil"></block>
+  </category>	
+
+  <category name="Logic" >
+    <block type="inout_highlow"></block>
+    <block type="controls_if"></block>
+    <block type="logic_compare"></block>
+    <block type="logic_operation"></block>
+    <block type="logic_negate"></block>
+    <block type="logic_null"></block>
+  </category>
+    
+  <category name="Math" >
+    <block type="math_number"></block>
+    <block type="math_arithmetic"></block>
+    <block type="base_map">
+      <value name="DMAX">
+        <block type="math_number">
+          <field name="NUM">180</field>
+        </block>
+      </value>
+    </block>
+    <block type="new_map">
+	    <value name="MAX_IN">
+	      <block type="math_number" >
+	        <field name="NUM">4095</field>
+	      </block>
+	    </value>
+	    <value name="MAX_OUT">
+	      <block type="math_number">
+	        <field name="NUM">255</field>
+	      </block>
+	    </value>
+  	</block>
+    
+  </category>
+
+  <category name="Text" >
+    <block type="text"></block>
+    <block type="add_text_to_text">
+      <value name="STRING_TO">
+        <block type="text">
+          <field name="TEXT"></field>
+        </block>
+      </value>
+      <value name="STRING_TO2">
+        <block type="text">
+          <field name="TEXT"></field>
+        </block>
+      </value>
+    </block>
+    <block type="convert_texttoint">
+      <value name="VALUE_IN">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+    </block>
+
+    <block type="get_text_form_preamble"></block>
+    <block type="set_text_form_preamble"></block>
+    
+  </category>
+
+	<category name="Convert" >
+
+    <block type="convert_texttoint">
+      <value name="VALUE_IN">
+        <block type="math_number">
+          <field name="NUM">1</field>
+        </block>
+      </value>
+    </block>
+
+    
+
+  </category>
+
+  <category name="Variables"  custom="VARIABLE"></category>
+  <category name="Functions"  custom="PROCEDURE"></category> 
+
+  
+  <sep></sep>
+</xml>
+
+
+
+</body>
+</html>
